@@ -26,6 +26,7 @@ namespace BusTicket
             btnSave.Text = "Save";
             btnDelete.Enabled = false;
             model.ID = 0;
+            MstID = 0;
         }
         //function for data gride view 
         
