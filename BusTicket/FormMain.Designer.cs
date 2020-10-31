@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelTop = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSideMenu = new System.Windows.Forms.Panel();
@@ -45,13 +45,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.dgvFindBus = new System.Windows.Forms.DataGridView();
-            this.btnFindBus = new System.Windows.Forms.Button();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.cmbFrom = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.datDate = new System.Windows.Forms.DateTimePicker();
             this.colTripID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +52,14 @@
             this.colRouteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFindBus = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.cmbFrom = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.datDate = new System.Windows.Forms.DateTimePicker();
+            this.btnUserRegister = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.panelSideMenu.SuspendLayout();
             this.panelSetup.SuspendLayout();
@@ -90,6 +91,7 @@
             // panelSideMenu
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.panelSideMenu.Controls.Add(this.btnUserRegister);
             this.panelSideMenu.Controls.Add(this.panelSetup);
             this.panelSideMenu.Controls.Add(this.btnSetup);
             this.panelSideMenu.Controls.Add(this.btnDashboard);
@@ -273,21 +275,21 @@
             // 
             this.dgvFindBus.AllowUserToAddRows = false;
             this.dgvFindBus.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvFindBus.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvFindBus.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFindBus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFindBus.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFindBus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFindBus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFindBus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFindBus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTripID,
@@ -297,14 +299,14 @@
             this.colRouteName,
             this.colFare,
             this.colBuy});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFindBus.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFindBus.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFindBus.Location = new System.Drawing.Point(6, 130);
             this.dgvFindBus.Name = "dgvFindBus";
             this.dgvFindBus.ReadOnly = true;
@@ -313,6 +315,49 @@
             this.dgvFindBus.RowTemplate.Height = 30;
             this.dgvFindBus.Size = new System.Drawing.Size(761, 319);
             this.dgvFindBus.TabIndex = 12;
+            // 
+            // colTripID
+            // 
+            this.colTripID.HeaderText = "Coach";
+            this.colTripID.Name = "colTripID";
+            this.colTripID.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            this.colDate.HeaderText = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            // 
+            // colSeats
+            // 
+            this.colSeats.HeaderText = "Seats";
+            this.colSeats.Name = "colSeats";
+            this.colSeats.ReadOnly = true;
+            // 
+            // colAvailable
+            // 
+            this.colAvailable.HeaderText = "Available";
+            this.colAvailable.Name = "colAvailable";
+            this.colAvailable.ReadOnly = true;
+            // 
+            // colRouteName
+            // 
+            this.colRouteName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colRouteName.HeaderText = "Route Name";
+            this.colRouteName.Name = "colRouteName";
+            this.colRouteName.ReadOnly = true;
+            // 
+            // colFare
+            // 
+            this.colFare.HeaderText = "Fare";
+            this.colFare.Name = "colFare";
+            this.colFare.ReadOnly = true;
+            // 
+            // colBuy
+            // 
+            this.colBuy.HeaderText = "Buy";
+            this.colBuy.Name = "colBuy";
+            this.colBuy.ReadOnly = true;
             // 
             // btnFindBus
             // 
@@ -385,48 +430,24 @@
             this.datDate.Size = new System.Drawing.Size(219, 22);
             this.datDate.TabIndex = 1;
             // 
-            // colTripID
+            // btnUserRegister
             // 
-            this.colTripID.HeaderText = "Coach";
-            this.colTripID.Name = "colTripID";
-            this.colTripID.ReadOnly = true;
-            // 
-            // colDate
-            // 
-            this.colDate.HeaderText = "Date";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            // 
-            // colSeats
-            // 
-            this.colSeats.HeaderText = "Seats";
-            this.colSeats.Name = "colSeats";
-            this.colSeats.ReadOnly = true;
-            // 
-            // colAvailable
-            // 
-            this.colAvailable.HeaderText = "Available";
-            this.colAvailable.Name = "colAvailable";
-            this.colAvailable.ReadOnly = true;
-            // 
-            // colRouteName
-            // 
-            this.colRouteName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colRouteName.HeaderText = "Route Name";
-            this.colRouteName.Name = "colRouteName";
-            this.colRouteName.ReadOnly = true;
-            // 
-            // colFare
-            // 
-            this.colFare.HeaderText = "Fare";
-            this.colFare.Name = "colFare";
-            this.colFare.ReadOnly = true;
-            // 
-            // colBuy
-            // 
-            this.colBuy.HeaderText = "Buy";
-            this.colBuy.Name = "colBuy";
-            this.colBuy.ReadOnly = true;
+            this.btnUserRegister.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUserRegister.FlatAppearance.BorderSize = 0;
+            this.btnUserRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserRegister.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnUserRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUserRegister.Location = new System.Drawing.Point(0, 336);
+            this.btnUserRegister.Name = "btnUserRegister";
+            this.btnUserRegister.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnUserRegister.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnUserRegister.Size = new System.Drawing.Size(205, 45);
+            this.btnUserRegister.TabIndex = 4;
+            this.btnUserRegister.Text = "User Registration";
+            this.btnUserRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUserRegister.UseVisualStyleBackColor = true;
+            this.btnUserRegister.Click += new System.EventHandler(this.btnUserRegister_Click);
             // 
             // FormMain
             // 
@@ -482,5 +503,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colRouteName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFare;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBuy;
+        private System.Windows.Forms.Button btnUserRegister;
     }
 }

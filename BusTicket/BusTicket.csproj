@@ -145,6 +145,8 @@
       <DependentUpon>FormUserRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="MessageManager.cs" />
+    <Compile Include="PasswordManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteDetailsTB.cs">
@@ -157,6 +159,9 @@
       <DependentUpon>BusDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TripInfoTB.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoTB.cs">
       <DependentUpon>BusDBModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BusInfo.resx">

@@ -145,5 +145,11 @@ namespace BusTicket
                 }
             }
         }
+
+        private void btnUserRegister_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FormUserRegistration());
+            hideSubMenu();
+        }
     }
 }

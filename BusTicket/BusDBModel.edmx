@@ -77,6 +77,18 @@
           <Property Name="DriverID" Type="int" />
           <Property Name="SuperVisorID" Type="int" />
         </EntityType>
+        <EntityType Name="UserInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="AccountType" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_RouteDetailsTB_RouteInfoTB">
           <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="0..1" />
           <End Role="RouteDetailsTB" Type="Self.RouteDetailsTB" Multiplicity="*" />
@@ -157,6 +169,7 @@
           <EntitySet Name="RouteInfoTB" EntityType="Self.RouteInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperViseorInfoTB" EntityType="Self.SuperViseorInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TripInfoTB" EntityType="Self.TripInfoTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfoTB" EntityType="Self.UserInfoTB" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_RouteDetailsTB_RouteInfoTB" Association="Self.FK_RouteDetailsTB_RouteInfoTB">
             <End Role="RouteInfoTB" EntitySet="RouteInfoTB" />
             <End Role="RouteDetailsTB" EntitySet="RouteDetailsTB" />
@@ -229,6 +242,7 @@
             <End Role="SuperViseorInfoTB" EntitySet="SuperViseorInfoTBs" />
             <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
           </AssociationSet>
+          <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
           </EntityContainer>
         <EntityType Name="SuperViseorInfoTB">
           <Key>
@@ -375,6 +389,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -456,6 +482,19 @@
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="PerSitPrice" ColumnName="PerSitPrice" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.UserInfoTB">
+              <MappingFragment StoreEntitySet="UserInfoTB">
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

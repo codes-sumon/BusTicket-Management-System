@@ -32,5 +32,6 @@ namespace BusTicket
         public virtual DbSet<CounterInfoTB> CounterInfoTBs { get; set; }
         public virtual DbSet<RouteInfoTB> RouteInfoTBs { get; set; }
         public virtual DbSet<TripInfoTB> TripInfoTBs { get; set; }
+        public virtual DbSet<UserInfoTB> UserInfoTBs { get; set; }
     }
 }

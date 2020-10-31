@@ -51,11 +51,6 @@ namespace BusTicket
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //if (cmbAddCounter.SelectedValue == null)
-            //{
-            //    return;
-
-            //}
             if (string.IsNullOrEmpty(txtCounterName.Text) || string.IsNullOrEmpty(txtPhone.Text) || string.IsNullOrEmpty(txtAddress.Text))
             {
                 MessageBox.Show("Fill All Required File * ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
