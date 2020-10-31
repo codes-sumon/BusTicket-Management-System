@@ -33,6 +33,26 @@
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="Address" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="RouteDetailsTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RouteID" Type="int" />
+          <Property Name="NextCounter" Type="int" />
+          <Property Name="NCDistanceTime" Type="varchar" MaxLength="50" />
+          <Property Name="SerielNo" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="RouteInfoTB">
+          <Key>
+            <PropertyRef Name="RouteID" />
+          </Key>
+          <Property Name="RouteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="BegCounter" Type="int" />
+          <Property Name="EndCounter" Type="int" />
+          <Property Name="CounterID" Type="int" />
+        </EntityType>
         <EntityType Name="SuperViseorInfoTB">
           <Key>
             <PropertyRef Name="ID" />
@@ -42,11 +62,125 @@
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="Address" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="TripInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="PerSitPrice" Type="int" />
+          <Property Name="StartTime" Type="varchar" MaxLength="50" />
+          <Property Name="EndTime" Type="varchar" MaxLength="50" />
+          <Property Name="BusID" Type="int" />
+          <Property Name="CounterID" Type="int" />
+          <Property Name="RouteID" Type="int" />
+          <Property Name="DriverID" Type="int" />
+          <Property Name="SuperVisorID" Type="int" />
+        </EntityType>
+        <Association Name="FK_RouteDetailsTB_RouteInfoTB">
+          <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="0..1" />
+          <End Role="RouteDetailsTB" Type="Self.RouteDetailsTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="RouteDetailsTB">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouteInfoTB_CounterInfoTB">
+          <End Role="CounterInfoTB" Type="Self.CounterInfoTB" Multiplicity="0..1" />
+          <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CounterInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RouteInfoTB">
+              <PropertyRef Name="CounterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_BusInfoTB">
+          <End Role="BusInfoTB" Type="Self.BusInfoTB" Multiplicity="0..1" />
+          <End Role="TripInfoTB" Type="Self.TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="BusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_DriverInfoTB">
+          <End Role="DriverInfoTB" Type="Self.DriverInfoTB" Multiplicity="0..1" />
+          <End Role="TripInfoTB" Type="Self.TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_RouteInfoTB">
+          <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="0..1" />
+          <End Role="TripInfoTB" Type="Self.TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_SuperViseorInfoTB">
+          <End Role="SuperViseorInfoTB" Type="Self.SuperViseorInfoTB" Multiplicity="0..1" />
+          <End Role="TripInfoTB" Type="Self.TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuperViseorInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="SuperVisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BusDBModelStoreContainer">
           <EntitySet Name="BusInfoTB" EntityType="Self.BusInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CounterInfoTB" EntityType="Self.CounterInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DriverInfoTB" EntityType="Self.DriverInfoTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteDetailsTB" EntityType="Self.RouteDetailsTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteInfoTB" EntityType="Self.RouteInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperViseorInfoTB" EntityType="Self.SuperViseorInfoTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripInfoTB" EntityType="Self.TripInfoTB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RouteDetailsTB_RouteInfoTB" Association="Self.FK_RouteDetailsTB_RouteInfoTB">
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTB" />
+            <End Role="RouteDetailsTB" EntitySet="RouteDetailsTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouteInfoTB_CounterInfoTB" Association="Self.FK_RouteInfoTB_CounterInfoTB">
+            <End Role="CounterInfoTB" EntitySet="CounterInfoTB" />
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_BusInfoTB" Association="Self.FK_TripInfoTB_BusInfoTB">
+            <End Role="BusInfoTB" EntitySet="BusInfoTB" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_DriverInfoTB" Association="Self.FK_TripInfoTB_DriverInfoTB">
+            <End Role="DriverInfoTB" EntitySet="DriverInfoTB" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_RouteInfoTB" Association="Self.FK_TripInfoTB_RouteInfoTB">
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTB" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_SuperViseorInfoTB" Association="Self.FK_TripInfoTB_SuperViseorInfoTB">
+            <End Role="SuperViseorInfoTB" EntitySet="SuperViseorInfoTB" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTB" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -61,31 +195,41 @@
           <Property Name="BusNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TotalSits" Type="Int32" Nullable="false" />
           <Property Name="BusType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="CounterInfoTB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TripInfoTBs" Relationship="BusDBModel.FK_TripInfoTB_BusInfoTB" FromRole="BusInfoTB" ToRole="TripInfoTB" />
         </EntityType>
         <EntityContainer Name="BusDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BusInfoTBs" EntityType="Self.BusInfoTB" />
-          <EntitySet Name="CounterInfoTBs" EntityType="Self.CounterInfoTB" />
-          <EntitySet Name="DriverInfoTBs" EntityType="BusDBModel.DriverInfoTB" />
           <EntitySet Name="SuperViseorInfoTBs" EntityType="BusDBModel.SuperViseorInfoTB" />
-        </EntityContainer>
-        <EntityType Name="DriverInfoTB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-        </EntityType>
+          <EntitySet Name="RouteDetailsTBs" EntityType="BusDBModel.RouteDetailsTB" />
+          <EntitySet Name="DriverInfoTBs" EntityType="BusDBModel.DriverInfoTB" />
+          <EntitySet Name="CounterInfoTBs" EntityType="BusDBModel.CounterInfoTB" />
+          <EntitySet Name="RouteInfoTBs" EntityType="BusDBModel.RouteInfoTB" />
+          <EntitySet Name="TripInfoTBs" EntityType="BusDBModel.TripInfoTB" />
+          <AssociationSet Name="FK_TripInfoTB_BusInfoTB" Association="BusDBModel.FK_TripInfoTB_BusInfoTB">
+            <End Role="BusInfoTB" EntitySet="BusInfoTBs" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouteInfoTB_CounterInfoTB" Association="BusDBModel.FK_RouteInfoTB_CounterInfoTB">
+            <End Role="CounterInfoTB" EntitySet="CounterInfoTBs" />
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_DriverInfoTB" Association="BusDBModel.FK_TripInfoTB_DriverInfoTB">
+            <End Role="DriverInfoTB" EntitySet="DriverInfoTBs" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouteDetailsTB_RouteInfoTB" Association="BusDBModel.FK_RouteDetailsTB_RouteInfoTB">
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTBs" />
+            <End Role="RouteDetailsTB" EntitySet="RouteDetailsTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_RouteInfoTB" Association="BusDBModel.FK_TripInfoTB_RouteInfoTB">
+            <End Role="RouteInfoTB" EntitySet="RouteInfoTBs" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripInfoTB_SuperViseorInfoTB" Association="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB">
+            <End Role="SuperViseorInfoTB" EntitySet="SuperViseorInfoTBs" />
+            <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="SuperViseorInfoTB">
           <Key>
             <PropertyRef Name="ID" />
@@ -94,8 +238,144 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TripInfoTBs" Relationship="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" FromRole="SuperViseorInfoTB" ToRole="TripInfoTB" />
         </EntityType>
-      </Schema>
+        <EntityType Name="RouteDetailsTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RouteID" Type="Int32" />
+          <Property Name="NextCounter" Type="Int32" />
+          <Property Name="NCDistanceTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerielNo" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="RouteInfoTB" Relationship="BusDBModel.FK_RouteDetailsTB_RouteInfoTB" FromRole="RouteDetailsTB" ToRole="RouteInfoTB" />
+        </EntityType>
+        <EntityType Name="DriverInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TripInfoTBs" Relationship="BusDBModel.FK_TripInfoTB_DriverInfoTB" FromRole="DriverInfoTB" ToRole="TripInfoTB" />
+        </EntityType>
+        <EntityType Name="CounterInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RouteInfoTBs" Relationship="BusDBModel.FK_RouteInfoTB_CounterInfoTB" FromRole="CounterInfoTB" ToRole="RouteInfoTB" />
+        </EntityType>
+        <EntityType Name="RouteInfoTB">
+          <Key>
+            <PropertyRef Name="RouteID" />
+          </Key>
+          <Property Name="RouteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BegCounter" Type="Int32" />
+          <Property Name="EndCounter" Type="Int32" />
+          <Property Name="CounterID" Type="Int32" />
+          <NavigationProperty Name="CounterInfoTB" Relationship="BusDBModel.FK_RouteInfoTB_CounterInfoTB" FromRole="RouteInfoTB" ToRole="CounterInfoTB" />
+          <NavigationProperty Name="RouteDetailsTBs" Relationship="BusDBModel.FK_RouteDetailsTB_RouteInfoTB" FromRole="RouteInfoTB" ToRole="RouteDetailsTB" />
+          <NavigationProperty Name="TripInfoTBs" Relationship="BusDBModel.FK_TripInfoTB_RouteInfoTB" FromRole="RouteInfoTB" ToRole="TripInfoTB" />
+        </EntityType>
+        <EntityType Name="TripInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="PerSitPrice" Type="Int32" />
+          <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusID" Type="Int32" />
+          <Property Name="CounterID" Type="Int32" />
+          <Property Name="RouteID" Type="Int32" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="SuperVisorID" Type="Int32" />
+          <NavigationProperty Name="BusInfoTB" Relationship="BusDBModel.FK_TripInfoTB_BusInfoTB" FromRole="TripInfoTB" ToRole="BusInfoTB" />
+          <NavigationProperty Name="DriverInfoTB" Relationship="BusDBModel.FK_TripInfoTB_DriverInfoTB" FromRole="TripInfoTB" ToRole="DriverInfoTB" />
+          <NavigationProperty Name="RouteInfoTB" Relationship="BusDBModel.FK_TripInfoTB_RouteInfoTB" FromRole="TripInfoTB" ToRole="RouteInfoTB" />
+          <NavigationProperty Name="SuperViseorInfoTB" Relationship="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" FromRole="TripInfoTB" ToRole="SuperViseorInfoTB" />
+        </EntityType>
+        <Association Name="FK_TripInfoTB_BusInfoTB">
+          <End Type="BusDBModel.BusInfoTB" Role="BusInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="BusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouteInfoTB_CounterInfoTB">
+          <End Type="BusDBModel.CounterInfoTB" Role="CounterInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.RouteInfoTB" Role="RouteInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CounterInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RouteInfoTB">
+              <PropertyRef Name="CounterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_DriverInfoTB">
+          <End Type="BusDBModel.DriverInfoTB" Role="DriverInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouteDetailsTB_RouteInfoTB">
+          <End Type="BusDBModel.RouteInfoTB" Role="RouteInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.RouteDetailsTB" Role="RouteDetailsTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="RouteDetailsTB">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_RouteInfoTB">
+          <End Type="BusDBModel.RouteInfoTB" Role="RouteInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripInfoTB_SuperViseorInfoTB">
+          <End Type="BusDBModel.SuperViseorInfoTB" Role="SuperViseorInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuperViseorInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TripInfoTB">
+              <PropertyRef Name="SuperVisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -112,13 +392,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CounterInfoTBs">
-            <EntityTypeMapping TypeName="BusDBModel.CounterInfoTB">
-              <MappingFragment StoreEntitySet="CounterInfoTB">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <EntitySetMapping Name="SuperViseorInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.SuperViseorInfoTB">
+              <MappingFragment StoreEntitySet="SuperViseorInfoTB">
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteDetailsTBs">
+            <EntityTypeMapping TypeName="BusDBModel.RouteDetailsTB">
+              <MappingFragment StoreEntitySet="RouteDetailsTB">
+                <ScalarProperty Name="SerielNo" ColumnName="SerielNo" />
+                <ScalarProperty Name="NCDistanceTime" ColumnName="NCDistanceTime" />
+                <ScalarProperty Name="NextCounter" ColumnName="NextCounter" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -132,12 +423,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SuperViseorInfoTBs">
-            <EntityTypeMapping TypeName="BusDBModel.SuperViseorInfoTB">
-              <MappingFragment StoreEntitySet="SuperViseorInfoTB">
+          <EntitySetMapping Name="CounterInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.CounterInfoTB">
+              <MappingFragment StoreEntitySet="CounterInfoTB">
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.RouteInfoTB">
+              <MappingFragment StoreEntitySet="RouteInfoTB">
+                <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+                <ScalarProperty Name="EndCounter" ColumnName="EndCounter" />
+                <ScalarProperty Name="BegCounter" ColumnName="BegCounter" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.TripInfoTB">
+              <MappingFragment StoreEntitySet="TripInfoTB">
+                <ScalarProperty Name="SuperVisorID" ColumnName="SuperVisorID" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="PerSitPrice" ColumnName="PerSitPrice" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

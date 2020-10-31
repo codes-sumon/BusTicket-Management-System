@@ -37,13 +37,13 @@
             this.dgPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelDriverInfo = new System.Windows.Forms.Label();
-            this.labelBusName = new System.Windows.Forms.Label();
             this.labelBusNumber = new System.Windows.Forms.Label();
             this.labelAddress = new System.Windows.Forms.Label();
             this.tlpTitle = new System.Windows.Forms.TableLayoutPanel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -101,10 +101,9 @@
             // dgDriverID
             // 
             this.dgDriverID.DataPropertyName = "ID";
-            this.dgDriverID.HeaderText = "Counter ID";
+            this.dgDriverID.HeaderText = "Driver ID";
             this.dgDriverID.Name = "dgDriverID";
             this.dgDriverID.ReadOnly = true;
-            this.dgDriverID.Visible = false;
             // 
             // dgName
             // 
@@ -147,29 +146,17 @@
             this.labelDriverInfo.Text = "Driver Information";
             this.labelDriverInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelBusName
-            // 
-            this.labelBusName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBusName.AutoSize = true;
-            this.labelBusName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBusName.ForeColor = System.Drawing.Color.White;
-            this.labelBusName.Location = new System.Drawing.Point(26, 0);
-            this.labelBusName.Name = "labelBusName";
-            this.labelBusName.Size = new System.Drawing.Size(49, 19);
-            this.labelBusName.TabIndex = 0;
-            this.labelBusName.Text = "Name:";
-            // 
             // labelBusNumber
             // 
             this.labelBusNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBusNumber.AutoSize = true;
             this.labelBusNumber.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusNumber.ForeColor = System.Drawing.Color.White;
-            this.labelBusNumber.Location = new System.Drawing.Point(413, 0);
+            this.labelBusNumber.Location = new System.Drawing.Point(406, 0);
             this.labelBusNumber.Name = "labelBusNumber";
-            this.labelBusNumber.Size = new System.Drawing.Size(51, 19);
+            this.labelBusNumber.Size = new System.Drawing.Size(58, 19);
             this.labelBusNumber.TabIndex = 0;
-            this.labelBusNumber.Text = "Phone:";
+            this.labelBusNumber.Text = "Phone *";
             // 
             // labelAddress
             // 
@@ -177,11 +164,11 @@
             this.labelAddress.AutoSize = true;
             this.labelAddress.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAddress.ForeColor = System.Drawing.Color.White;
-            this.labelAddress.Location = new System.Drawing.Point(14, 49);
+            this.labelAddress.Location = new System.Drawing.Point(7, 49);
             this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(61, 19);
+            this.labelAddress.Size = new System.Drawing.Size(68, 19);
             this.labelAddress.TabIndex = 0;
-            this.labelAddress.Text = "Address:";
+            this.labelAddress.Text = "Address *";
             // 
             // tlpTitle
             // 
@@ -227,12 +214,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.28571F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.52074F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.17051F));
-            this.tableLayoutPanel2.Controls.Add(this.labelBusName, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelBusNumber, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtAddress, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.labelAddress, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtName, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtPhone, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtAddress, 1, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 70);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -240,6 +227,18 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.51724F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(770, 87);
             this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name *";
             // 
             // txtPhone
             // 
@@ -249,7 +248,8 @@
             this.txtPhone.Location = new System.Drawing.Point(470, 3);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(297, 20);
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.TabIndex = 2;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // btnSave
             // 
@@ -340,21 +340,21 @@
         #endregion
         private System.Windows.Forms.DataGridView dgvDriverInfo;
         private System.Windows.Forms.Label labelDriverInfo;
-        private System.Windows.Forms.Label labelBusName;
         private System.Windows.Forms.Label labelBusNumber;
         private System.Windows.Forms.Label labelAddress;
         private System.Windows.Forms.TableLayoutPanel tlpTitle;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TableLayoutPanel tlpButtonBox;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDriverID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgAddress;
+        private System.Windows.Forms.TextBox txtPhone;
     }
 }

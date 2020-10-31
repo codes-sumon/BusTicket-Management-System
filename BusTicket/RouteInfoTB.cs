@@ -12,19 +12,24 @@ namespace BusTicket
     using System;
     using System.Collections.Generic;
     
-    public partial class SuperViseorInfoTB
+    public partial class RouteInfoTB
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SuperViseorInfoTB()
+        public RouteInfoTB()
         {
+            this.RouteDetailsTBs = new HashSet<RouteDetailsTB>();
             this.TripInfoTBs = new HashSet<TripInfoTB>();
         }
     
-        public int ID { get; set; }
+        public int RouteID { get; set; }
         public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
+        public Nullable<int> BegCounter { get; set; }
+        public Nullable<int> EndCounter { get; set; }
+        public Nullable<int> CounterID { get; set; }
     
+        public virtual CounterInfoTB CounterInfoTB { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouteDetailsTB> RouteDetailsTBs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TripInfoTB> TripInfoTBs { get; set; }
     }

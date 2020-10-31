@@ -47,6 +47,31 @@ namespace BusTicket
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPhone.Text) || string.IsNullOrEmpty(txtAddress.Text))
+            {
+                MessageBox.Show("Fill All Required File * ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
+
+            if (MstID == 0)
+            {
+                foreach (DataGridViewRow dr in dgvSVInfo.Rows)
+                {
+                    if (dr.Cells[1].Value.ToString() == txtName.Text)
+                    {
+                        MessageBox.Show("Already Added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    if (dr.Cells[2].Value.ToString() == txtPhone.Text)
+                    {
+                        MessageBox.Show("Already Added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    
+                }
+            }
             using (BusDBEntities db = new BusDBEntities())
             {
                 model = db.SuperViseorInfoTBs.SingleOrDefault(a => a.ID == MstID);
@@ -118,6 +143,14 @@ namespace BusTicket
             }
             btnSave.Text = "Update";
             btnDelete.Enabled = true;
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

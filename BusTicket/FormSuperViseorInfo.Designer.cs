@@ -36,10 +36,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.dgvSVInfo = new System.Windows.Forms.DataGridView();
-            this.dgSVID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtName = new System.Windows.Forms.TextBox();
             this.tlpTitle = new System.Windows.Forms.TableLayoutPanel();
             this.labelSuperVisorInfo = new System.Windows.Forms.Label();
@@ -49,6 +45,10 @@
             this.labelBusName = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgSVID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSVInfo)).BeginInit();
             this.tlpTitle.SuspendLayout();
             this.tlpButtonBox.SuspendLayout();
@@ -109,6 +109,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(337, 20);
             this.txtPhone.TabIndex = 1;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // dgvSVInfo
             // 
@@ -152,41 +153,6 @@
             this.dgvSVInfo.Size = new System.Drawing.Size(874, 245);
             this.dgvSVInfo.TabIndex = 14;
             this.dgvSVInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSVInfo_CellClick);
-            // 
-            // dgSVID
-            // 
-            this.dgSVID.DataPropertyName = "ID";
-            this.dgSVID.HeaderText = "Counter ID";
-            this.dgSVID.Name = "dgSVID";
-            this.dgSVID.ReadOnly = true;
-            this.dgSVID.Visible = false;
-            // 
-            // dgName
-            // 
-            this.dgName.DataPropertyName = "Name";
-            this.dgName.FillWeight = 260F;
-            this.dgName.HeaderText = "Name";
-            this.dgName.Name = "dgName";
-            this.dgName.ReadOnly = true;
-            this.dgName.Width = 260;
-            // 
-            // dgPhone
-            // 
-            this.dgPhone.DataPropertyName = "Phone";
-            this.dgPhone.FillWeight = 200F;
-            this.dgPhone.HeaderText = "Phone";
-            this.dgPhone.Name = "dgPhone";
-            this.dgPhone.ReadOnly = true;
-            this.dgPhone.Width = 200;
-            // 
-            // dgAddress
-            // 
-            this.dgAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgAddress.DataPropertyName = "Address";
-            this.dgAddress.FillWeight = 300F;
-            this.dgAddress.HeaderText = "Address";
-            this.dgAddress.Name = "dgAddress";
-            this.dgAddress.ReadOnly = true;
             // 
             // txtName
             // 
@@ -313,6 +279,42 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.51724F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(874, 87);
             this.tableLayoutPanel2.TabIndex = 12;
+            // 
+            // dgSVID
+            // 
+            this.dgSVID.DataPropertyName = "ID";
+            this.dgSVID.FillWeight = 120F;
+            this.dgSVID.HeaderText = "Counter ID";
+            this.dgSVID.Name = "dgSVID";
+            this.dgSVID.ReadOnly = true;
+            this.dgSVID.Width = 120;
+            // 
+            // dgName
+            // 
+            this.dgName.DataPropertyName = "Name";
+            this.dgName.FillWeight = 260F;
+            this.dgName.HeaderText = "Name";
+            this.dgName.Name = "dgName";
+            this.dgName.ReadOnly = true;
+            this.dgName.Width = 260;
+            // 
+            // dgPhone
+            // 
+            this.dgPhone.DataPropertyName = "Phone";
+            this.dgPhone.FillWeight = 200F;
+            this.dgPhone.HeaderText = "Phone";
+            this.dgPhone.Name = "dgPhone";
+            this.dgPhone.ReadOnly = true;
+            this.dgPhone.Width = 200;
+            // 
+            // dgAddress
+            // 
+            this.dgAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgAddress.DataPropertyName = "Address";
+            this.dgAddress.FillWeight = 300F;
+            this.dgAddress.HeaderText = "Address";
+            this.dgAddress.Name = "dgAddress";
+            this.dgAddress.ReadOnly = true;
             // 
             // FormSuperViseorInfo
             // 

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBusInfo = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,22 +64,22 @@
             // 
             this.dgvBusInfo.AllowUserToAddRows = false;
             this.dgvBusInfo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvBusInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvBusInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvBusInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBusInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBusInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBusInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvBusInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBusInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -87,28 +87,28 @@
             this.BusNumber,
             this.TotalSits,
             this.BusType});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBusInfo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBusInfo.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvBusInfo.Location = new System.Drawing.Point(31, 177);
             this.dgvBusInfo.Name = "dgvBusInfo";
             this.dgvBusInfo.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBusInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvBusInfo.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBusInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvBusInfo.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvBusInfo.Size = new System.Drawing.Size(831, 289);
             this.dgvBusInfo.TabIndex = 6;
             this.dgvBusInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBusInfo_CellClick);
@@ -116,10 +116,9 @@
             // ID
             // 
             this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
+            this.ID.HeaderText = "Bus ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Visible = false;
             // 
             // BusName
             // 
@@ -190,9 +189,9 @@
             this.txtBusNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBusNumber.Location = new System.Drawing.Point(519, 3);
+            this.txtBusNumber.Location = new System.Drawing.Point(521, 3);
             this.txtBusNumber.Name = "txtBusNumber";
-            this.txtBusNumber.Size = new System.Drawing.Size(328, 20);
+            this.txtBusNumber.Size = new System.Drawing.Size(326, 20);
             this.txtBusNumber.TabIndex = 1;
             // 
             // txtBusName
@@ -211,11 +210,11 @@
             this.labelTotalSits.AutoSize = true;
             this.labelTotalSits.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalSits.ForeColor = System.Drawing.Color.White;
-            this.labelTotalSits.Location = new System.Drawing.Point(15, 36);
+            this.labelTotalSits.Location = new System.Drawing.Point(12, 36);
             this.labelTotalSits.Name = "labelTotalSits";
-            this.labelTotalSits.Size = new System.Drawing.Size(68, 19);
+            this.labelTotalSits.Size = new System.Drawing.Size(71, 19);
             this.labelTotalSits.TabIndex = 0;
-            this.labelTotalSits.Text = "Total Sits:";
+            this.labelTotalSits.Text = "Total Sits*";
             // 
             // labelBusType
             // 
@@ -223,11 +222,11 @@
             this.labelBusType.AutoSize = true;
             this.labelBusType.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusType.ForeColor = System.Drawing.Color.White;
-            this.labelBusType.Location = new System.Drawing.Point(446, 36);
+            this.labelBusType.Location = new System.Drawing.Point(445, 36);
             this.labelBusType.Name = "labelBusType";
-            this.labelBusType.Size = new System.Drawing.Size(67, 19);
+            this.labelBusType.Size = new System.Drawing.Size(70, 19);
             this.labelBusType.TabIndex = 0;
-            this.labelBusType.Text = "Bus Type:";
+            this.labelBusType.Text = "Bus Type*";
             // 
             // labelBusNumber
             // 
@@ -235,11 +234,11 @@
             this.labelBusNumber.AutoSize = true;
             this.labelBusNumber.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusNumber.ForeColor = System.Drawing.Color.White;
-            this.labelBusNumber.Location = new System.Drawing.Point(424, 6);
+            this.labelBusNumber.Location = new System.Drawing.Point(423, 6);
             this.labelBusNumber.Name = "labelBusNumber";
-            this.labelBusNumber.Size = new System.Drawing.Size(89, 19);
+            this.labelBusNumber.Size = new System.Drawing.Size(92, 19);
             this.labelBusNumber.TabIndex = 0;
-            this.labelBusNumber.Text = "Bus Number:";
+            this.labelBusNumber.Text = "Bus Number*";
             // 
             // labelBusName
             // 
@@ -247,11 +246,11 @@
             this.labelBusName.AutoSize = true;
             this.labelBusName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusName.ForeColor = System.Drawing.Color.White;
-            this.labelBusName.Location = new System.Drawing.Point(34, 6);
+            this.labelBusName.Location = new System.Drawing.Point(31, 6);
             this.labelBusName.Name = "labelBusName";
-            this.labelBusName.Size = new System.Drawing.Size(49, 19);
+            this.labelBusName.Size = new System.Drawing.Size(52, 19);
             this.labelBusName.TabIndex = 0;
-            this.labelBusName.Text = "Name:";
+            this.labelBusName.Text = "Name*";
             // 
             // tableLayoutPanel2
             // 
@@ -260,8 +259,8 @@
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.25346F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.28571F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.52074F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.17051F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.76471F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.94118F));
             this.tableLayoutPanel2.Controls.Add(this.labelBusName, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelBusNumber, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelBusType, 2, 1);
@@ -294,6 +293,7 @@
             this.cbBusSits.Name = "cbBusSits";
             this.cbBusSits.Size = new System.Drawing.Size(327, 21);
             this.cbBusSits.TabIndex = 2;
+            this.cbBusSits.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbBusSits_KeyPress);
             // 
             // cbBusType
             // 
@@ -304,9 +304,9 @@
             this.cbBusType.Items.AddRange(new object[] {
             "AC",
             "Non-AC"});
-            this.cbBusType.Location = new System.Drawing.Point(519, 34);
+            this.cbBusType.Location = new System.Drawing.Point(521, 34);
             this.cbBusType.Name = "cbBusType";
-            this.cbBusType.Size = new System.Drawing.Size(328, 21);
+            this.cbBusType.Size = new System.Drawing.Size(326, 21);
             this.cbBusType.TabIndex = 2;
             // 
             // btnCancel
@@ -411,12 +411,12 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TableLayoutPanel tlpButtonBox;
+        private System.Windows.Forms.ComboBox cbBusSits;
+        private System.Windows.Forms.ComboBox cbBusType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn BusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn BusNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalSits;
         private System.Windows.Forms.DataGridViewTextBoxColumn BusType;
-        private System.Windows.Forms.ComboBox cbBusSits;
-        private System.Windows.Forms.ComboBox cbBusType;
     }
 }

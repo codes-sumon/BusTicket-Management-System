@@ -12,6 +12,7 @@ namespace BusTicket
 {
     public partial class BusInfo : Form
     {
+        public int MstID { get; set; }
         BusInfoTB model = new BusInfoTB();
         public BusInfo()
         {
@@ -21,8 +22,8 @@ namespace BusTicket
         void clear()
         {
             txtBusName.Text = txtBusNumber.Text =  "";
-            cbBusSits.Text = "Select Total Sits";
-            cbBusType.Text = "Select Bus Type";
+            cbBusSits.Text = "40";
+            cbBusType.Text = "Non-AC";
             btnSave.Text = "Save";
             btnDelete.Enabled = false;
             model.ID = 0;
@@ -30,9 +31,25 @@ namespace BusTicket
         }
         //function for data gride view 
         
-
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtBusName.Text) || string.IsNullOrEmpty(txtBusNumber.Text) || string.IsNullOrEmpty(cbBusSits.Text) || string.IsNullOrEmpty(cbBusType.Text))
+            {
+                MessageBox.Show("Fill All Required File * ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
+
+                foreach (DataGridViewRow dr in dgvBusInfo.Rows)
+                {
+                    if (dr.Cells[2].Value.ToString() == txtBusNumber.Text)
+                    {
+                        MessageBox.Show("This Bus Number Is Already Added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
+
             using (BusDBEntities db = new BusDBEntities())
             {
                 model = db.BusInfoTBs.SingleOrDefault(a => a.ID == MstID);
@@ -43,7 +60,7 @@ namespace BusTicket
                     model.TotalSits = int.Parse(cbBusSits.Text);
                     model.BusType = cbBusType.Text.Trim();
                     db.SaveChanges();
-
+                    MstID = 0;
                     MessageBox.Show("Update Successfully");
                 }
                 else
@@ -95,6 +112,7 @@ namespace BusTicket
             PopulateDataGridView();
         }
 
+
         void PopulateDataGridView()
         {
             dgvBusInfo.AutoGenerateColumns = false;
@@ -103,7 +121,8 @@ namespace BusTicket
                 dgvBusInfo.DataSource = db.BusInfoTBs.ToList();   //BusInfoTBs is table name 
             }
         }
-        public int MstID;
+
+        
         private void dgvBusInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int ID = Convert.ToInt32(dgvBusInfo.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -123,6 +142,14 @@ namespace BusTicket
             }
             btnSave.Text = "Update";
             btnDelete.Enabled = true;
+        }
+
+        private void cbBusSits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

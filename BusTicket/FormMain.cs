@@ -58,7 +58,9 @@ namespace BusTicket
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            
             hideSubMenu();
+            if (activeForm != null) activeForm.Close();
         }
 
         private void btnSetup_Click(object sender, EventArgs e)
@@ -94,6 +96,54 @@ namespace BusTicket
         {
             openChildForm(new FormRouteInfo());
             hideSubMenu();
+        }
+
+        private void btnTripSetup_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FormTripSetup());
+            hideSubMenu();
+        }
+
+        private void btnFindBus_Click(object sender, EventArgs e)
+        {
+            dgvFindBus.Visible = true;
+
+
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            dgvFindBus.Visible = false;
+            comboLoadData();
+        }
+
+        private void comboLoadData()
+        {
+            using (BusDBEntities db = new BusDBEntities())
+            {
+                cmbFrom.DataSource = db.CounterInfoTBs.ToList();
+                cmbFrom.ValueMember = "ID";
+                cmbFrom.DisplayMember = "Name";
+
+                cmbTo.DataSource = db.CounterInfoTBs.ToList();
+                cmbTo.ValueMember = "ID";
+                cmbTo.DisplayMember = "Name";
+
+            }
+        }
+
+        void PopulateDataGridView()
+        {
+            dgvFindBus.AutoGenerateColumns = false;
+            using (BusDBEntities db = new BusDBEntities())
+            {
+
+                dgvFindBus.Rows.Clear();
+                foreach (var a in db.TripInfoTBs.OrderByDescending(c => c.ID).ToList())
+                {
+                    dgvFindBus.Rows.Add(a.ID, a.Date, a.StartTime);
+                }
+            }
         }
     }
 }

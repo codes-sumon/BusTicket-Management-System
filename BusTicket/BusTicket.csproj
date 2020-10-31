@@ -108,16 +108,55 @@
     <Compile Include="FormRouteInfo.Designer.cs">
       <DependentUpon>FormRouteInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRouteUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRouteUpdate.Designer.cs">
+      <DependentUpon>FormRouteUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSellsTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSellsTicket.Designer.cs">
+      <DependentUpon>FormSellsTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSuperViseorInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSuperViseorInfo.Designer.cs">
       <DependentUpon>FormSuperViseorInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTripSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTripSetup.Designer.cs">
+      <DependentUpon>FormTripSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserLogin.Designer.cs">
+      <DependentUpon>FormUserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserRegistration.Designer.cs">
+      <DependentUpon>FormUserRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteDetailsTB.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RouteInfoTB.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SuperViseorInfoTB.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripInfoTB.cs">
       <DependentUpon>BusDBModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BusInfo.resx">
@@ -135,8 +174,23 @@
     <EmbeddedResource Include="FormRouteInfo.resx">
       <DependentUpon>FormRouteInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRouteUpdate.resx">
+      <DependentUpon>FormRouteUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSellsTicket.resx">
+      <DependentUpon>FormSellsTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSuperViseorInfo.resx">
       <DependentUpon>FormSuperViseorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTripSetup.resx">
+      <DependentUpon>FormTripSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserLogin.resx">
+      <DependentUpon>FormUserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserRegistration.resx">
+      <DependentUpon>FormUserRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpButtonBox = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -147,11 +147,11 @@
             this.labelBusName.AutoSize = true;
             this.labelBusName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusName.ForeColor = System.Drawing.Color.White;
-            this.labelBusName.Location = new System.Drawing.Point(26, 0);
+            this.labelBusName.Location = new System.Drawing.Point(23, 0);
             this.labelBusName.Name = "labelBusName";
-            this.labelBusName.Size = new System.Drawing.Size(49, 19);
+            this.labelBusName.Size = new System.Drawing.Size(52, 19);
             this.labelBusName.TabIndex = 0;
-            this.labelBusName.Text = "Name:";
+            this.labelBusName.Text = "Name*";
             // 
             // labelBusNumber
             // 
@@ -159,11 +159,11 @@
             this.labelBusNumber.AutoSize = true;
             this.labelBusNumber.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBusNumber.ForeColor = System.Drawing.Color.White;
-            this.labelBusNumber.Location = new System.Drawing.Point(412, 0);
+            this.labelBusNumber.Location = new System.Drawing.Point(409, 0);
             this.labelBusNumber.Name = "labelBusNumber";
-            this.labelBusNumber.Size = new System.Drawing.Size(51, 19);
+            this.labelBusNumber.Size = new System.Drawing.Size(54, 19);
             this.labelBusNumber.TabIndex = 0;
-            this.labelBusNumber.Text = "Phone:";
+            this.labelBusNumber.Text = "Phone*";
             // 
             // labelAddress
             // 
@@ -171,11 +171,11 @@
             this.labelAddress.AutoSize = true;
             this.labelAddress.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAddress.ForeColor = System.Drawing.Color.White;
-            this.labelAddress.Location = new System.Drawing.Point(14, 49);
+            this.labelAddress.Location = new System.Drawing.Point(11, 49);
             this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(61, 19);
+            this.labelAddress.Size = new System.Drawing.Size(64, 19);
             this.labelAddress.TabIndex = 0;
-            this.labelAddress.Text = "Address:";
+            this.labelAddress.Text = "Address*";
             // 
             // txtCounterName
             // 
@@ -196,6 +196,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(294, 20);
             this.txtPhone.TabIndex = 1;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtAddress
             // 
@@ -240,35 +241,35 @@
             // 
             this.dgvCounterInfo.AllowUserToAddRows = false;
             this.dgvCounterInfo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvCounterInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvCounterInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCounterInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCounterInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCounterInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCounterInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCounterInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCounterInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgCounterID,
             this.dgName,
             this.dgPhone,
             this.dgAddress});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCounterInfo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCounterInfo.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCounterInfo.Location = new System.Drawing.Point(14, 205);
             this.dgvCounterInfo.Name = "dgvCounterInfo";
             this.dgvCounterInfo.ReadOnly = true;
@@ -285,7 +286,6 @@
             this.dgCounterID.HeaderText = "Counter ID";
             this.dgCounterID.Name = "dgCounterID";
             this.dgCounterID.ReadOnly = true;
-            this.dgCounterID.Visible = false;
             // 
             // dgName
             // 

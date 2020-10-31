@@ -14,10 +14,19 @@ namespace BusTicket
     
     public partial class BusInfoTB
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BusInfoTB()
+        {
+            this.TripInfoTBs = new HashSet<TripInfoTB>();
+        }
+    
         public int ID { get; set; }
         public string BusName { get; set; }
         public string BusNumber { get; set; }
         public int TotalSits { get; set; }
         public string BusType { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TripInfoTB> TripInfoTBs { get; set; }
     }
 }
