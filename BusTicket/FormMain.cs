@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -107,8 +108,24 @@ namespace BusTicket
         private void btnFindBus_Click(object sender, EventArgs e)
         {
             dgvFindBus.Visible = true;
+            using (BusDBEntities db = new BusDBEntities())
+            {
+                if (cmbFrom.SelectedValue == null || cmbTo.SelectedValue == null)
+                {
+                    MessageBox.Show("Please Counter Select First");
+                    return;
+                }
+               // TripInfoTB aTripInfoTB;
+               // List<TripInfoTB> aTripInfoTB = db.TripInfoTBs.Where(a=> a.RouteInfoTB.RouteDetailsTBs.Where(b=> b.NextCounter==1)).ToList();
+                ObjectResult<GetTripInformation_Result> results = db.GetTripInformation((int)cmbFrom.SelectedValue, (int)cmbTo.SelectedValue, dtpSearchDatetime.Value.Date.ToString("dd/MM/yyyy"));
 
-
+                dgvFindBus.Rows.Clear();
+                dgvFindBus.Columns[1].HeaderText = dtpSearchDatetime.Value.Date.ToString("dd/MM/yyyy");
+                foreach (GetTripInformation_Result a in results)
+                {
+                    dgvFindBus.Rows.Add(a.Coach,Convert.ToDateTime(a.StartTime).ToString("hh:mm"),a.TotalSits,a.Available,a.Roadname,a.PerSitPrice);
+                }
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)

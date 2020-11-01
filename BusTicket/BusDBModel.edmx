@@ -161,6 +161,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetTripInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartCounter" Type="int" Mode="In" />
+          <Parameter Name="EndCounter" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="BusDBModelStoreContainer">
           <EntitySet Name="BusInfoTB" EntityType="Self.BusInfoTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CounterInfoTB" EntityType="Self.CounterInfoTB" Schema="dbo" store:Type="Tables" />
@@ -243,6 +248,11 @@
             <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
           </AssociationSet>
           <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
+          <FunctionImport Name="GetTripInformation" ReturnType="Collection(BusDBModel.GetTripInformation_Result)">
+            <Parameter Name="StartCounter" Mode="In" Type="Int32" />
+            <Parameter Name="EndCounter" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="SuperViseorInfoTB">
           <Key>
@@ -401,6 +411,18 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="GetTripInformation_Result">
+          <Property Type="Int32" Name="Coach" Nullable="false" />
+          <Property Type="DateTime" Name="StartTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="BusName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BusNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BusType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalSits" Nullable="false" />
+          <Property Type="String" Name="Roadname" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Available" Nullable="false" />
+          <Property Type="Int32" Name="PerSitPrice" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -499,6 +521,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTripInformation" FunctionName="BusDBModel.Store.GetTripInformation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BusDBModel.GetTripInformation_Result">
+                <ScalarProperty Name="Coach" ColumnName="Coach" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BusName" ColumnName="BusName" />
+                <ScalarProperty Name="BusNumber" ColumnName="BusNumber" />
+                <ScalarProperty Name="BusType" ColumnName="BusType" />
+                <ScalarProperty Name="TotalSits" ColumnName="TotalSits" />
+                <ScalarProperty Name="Roadname" ColumnName="Roadname" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="PerSitPrice" ColumnName="PerSitPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -40,7 +40,8 @@ namespace BusTicket
                 return;
 
             }
-
+            if (MstID == 0)
+            {
                 foreach (DataGridViewRow dr in dgvBusInfo.Rows)
                 {
                     if (dr.Cells[2].Value.ToString() == txtBusNumber.Text)
@@ -49,7 +50,7 @@ namespace BusTicket
                         return;
                     }
                 }
-
+            }
             using (BusDBEntities db = new BusDBEntities())
             {
                 model = db.BusInfoTBs.SingleOrDefault(a => a.ID == MstID);

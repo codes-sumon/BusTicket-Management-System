@@ -144,6 +144,9 @@
     <Compile Include="FormUserRegistration.Designer.cs">
       <DependentUpon>FormUserRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetTripInformation_Result.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="MessageManager.cs" />
     <Compile Include="PasswordManager.cs" />

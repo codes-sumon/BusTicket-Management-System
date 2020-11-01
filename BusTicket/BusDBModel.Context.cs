@@ -12,6 +12,8 @@ namespace BusTicket
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BusDBEntities : DbContext
     {
@@ -33,5 +35,22 @@ namespace BusTicket
         public virtual DbSet<RouteInfoTB> RouteInfoTBs { get; set; }
         public virtual DbSet<TripInfoTB> TripInfoTBs { get; set; }
         public virtual DbSet<UserInfoTB> UserInfoTBs { get; set; }
+    
+        public virtual ObjectResult<GetTripInformation_Result> GetTripInformation(Nullable<int> startCounter, Nullable<int> endCounter, string date)
+        {
+            var startCounterParameter = startCounter.HasValue ?
+                new ObjectParameter("StartCounter", startCounter) :
+                new ObjectParameter("StartCounter", typeof(int));
+    
+            var endCounterParameter = endCounter.HasValue ?
+                new ObjectParameter("EndCounter", endCounter) :
+                new ObjectParameter("EndCounter", typeof(int));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTripInformation_Result>("GetTripInformation", startCounterParameter, endCounterParameter, dateParameter);
+        }
     }
 }
