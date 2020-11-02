@@ -101,9 +101,6 @@ namespace BusTicket
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-
-
             using (BusDBEntities db = new BusDBEntities())
             {
                 TripInfoTB aTripInfoTB;
@@ -120,12 +117,10 @@ namespace BusTicket
                     aTripInfoTB.SuperVisorID = (int)cmbSuperVisor.SelectedValue;
                     aTripInfoTB.StartTime = txtStartTime.Text;
                     
-
                     db.TripInfoTBs.Add(aTripInfoTB);
                     db.SaveChanges();
                     MessageBox.Show("Record Save Succesfully");
                     clear();
-
                 }
                 else
                 {
@@ -152,7 +147,6 @@ namespace BusTicket
             {
                 e.Handled = true;
             }
-
             // If you want, you can allow decimal (float) numbers
             
         }

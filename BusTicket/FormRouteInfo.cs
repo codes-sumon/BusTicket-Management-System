@@ -38,7 +38,6 @@ namespace BusTicket
                 cmEndCounter.DataSource = db.CounterInfoTBs.ToList();
                 cmEndCounter.ValueMember = "ID";
                 cmEndCounter.DisplayMember = "Name";
-                
             }
         }
 
@@ -46,34 +45,37 @@ namespace BusTicket
         {
             if(cmbAddCounter.SelectedValue==null)
             {
-                return;
-
-            }
-            if (string.IsNullOrEmpty(txtcounterdistance.Text) || string.IsNullOrEmpty(txtSerialNo.Text))
-            {
                 MessageBox.Show("Fill All Required Fild * ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (string.IsNullOrEmpty(txtcounterdistance.Text) || string.IsNullOrEmpty(txtSerialNo.Text))
+            {
+                MessageBox.Show("Fill Serial and Distance Time * ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             foreach (DataGridViewRow dr in dgroaddetails.Rows)
             {
                 if(dr.Cells[0].Value.ToString()==cmbAddCounter.SelectedValue.ToString())
                 {
                     MessageBox.Show("Already Added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
-
                 }
 
                 if(dr.Cells[1].Value.ToString() == txtSerialNo.Text)
                 {
                     MessageBox.Show("Already Added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
-
                 }
             }
             dgroaddetails.Rows.Add(cmbAddCounter.SelectedValue,txtSerialNo.Text,cmbAddCounter.Text, txtcounterdistance.Text);
+            clear_add();
         }
 
-
+        void clear_add()
+        {
+            txtcounterdistance.Text = txtSerialNo.Text = "";
+        }
 
         private void dgroaddetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -117,7 +119,7 @@ namespace BusTicket
                             {
                                 
                                 aRouteDetailsTB = new RouteDetailsTB();
-
+                                aRouteDetailsTB.SerielNo = Convert.ToDecimal(dr.Cells[1].Value);
                                 aRouteDetailsTB.RouteID = aRouteInfoTB.RouteID;
                                 aRouteDetailsTB.NextCounter = (int)dr.Cells[0].Value;
                                 aRouteDetailsTB.NCDistanceTime = dr.Cells[3].Value.ToString();

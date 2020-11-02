@@ -61,6 +61,7 @@ namespace BusTicket
         {
             
             hideSubMenu();
+            dgvFindBus.Visible = false;
             if (activeForm != null) activeForm.Close();
         }
 
@@ -105,6 +106,10 @@ namespace BusTicket
             hideSubMenu();
         }
 
+
+       //Bus Finding Procidure Start 
+
+
         private void btnFindBus_Click(object sender, EventArgs e)
         {
             dgvFindBus.Visible = true;
@@ -115,8 +120,7 @@ namespace BusTicket
                     MessageBox.Show("Please Counter Select First");
                     return;
                 }
-               // TripInfoTB aTripInfoTB;
-               // List<TripInfoTB> aTripInfoTB = db.TripInfoTBs.Where(a=> a.RouteInfoTB.RouteDetailsTBs.Where(b=> b.NextCounter==1)).ToList();
+
                 ObjectResult<GetTripInformation_Result> results = db.GetTripInformation((int)cmbFrom.SelectedValue, (int)cmbTo.SelectedValue, dtpSearchDatetime.Value.Date.ToString("dd/MM/yyyy"));
 
                 dgvFindBus.Rows.Clear();
@@ -126,6 +130,7 @@ namespace BusTicket
                     dgvFindBus.Rows.Add(a.Coach,Convert.ToDateTime(a.StartTime).ToString("hh:mm"),a.TotalSits,a.Available,a.Roadname,a.PerSitPrice);
                 }
             }
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -167,6 +172,14 @@ namespace BusTicket
         {
             openChildForm(new FormUserRegistration());
             hideSubMenu();
+        }
+
+        private void dgvFindBus_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int ID = Convert.ToInt32(dgvFindBus.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            FormSellsTicket a = new FormSellsTicket(ID, (int)cmbFrom.SelectedValue, (int)cmbTo.SelectedValue, dtpSearchDatetime.Value, dgvFindBus.Rows[e.RowIndex].Cells[1].Value.ToString());
+            a.Show();
         }
     }
 }

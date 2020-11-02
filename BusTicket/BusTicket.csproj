@@ -161,6 +161,12 @@
     <Compile Include="SuperViseorInfoTB.cs">
       <DependentUpon>BusDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TicketSalesInfoTB.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TicketSelesDeteil.cs">
+      <DependentUpon>BusDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TripInfoTB.cs">
       <DependentUpon>BusDBModel.tt</DependentUpon>
     </Compile>

@@ -48,6 +48,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgroaddetails = new System.Windows.Forms.DataGridView();
+            this.colCounterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCounterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNextConterDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,11 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbAddCounter = new System.Windows.Forms.ComboBox();
             this.txtSerialNo = new System.Windows.Forms.TextBox();
-            this.colCounterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCounterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNextConterDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel2.SuspendLayout();
             this.tlpButtonBox.SuspendLayout();
             this.tlpTitle.SuspendLayout();
@@ -326,6 +326,41 @@
             this.dgroaddetails.TabIndex = 21;
             this.dgroaddetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgroaddetails_CellClick);
             // 
+            // colCounterID
+            // 
+            this.colCounterID.HeaderText = "CounterID";
+            this.colCounterID.Name = "colCounterID";
+            this.colCounterID.ReadOnly = true;
+            this.colCounterID.Visible = false;
+            // 
+            // colSL
+            // 
+            this.colSL.HeaderText = "SL";
+            this.colSL.Name = "colSL";
+            this.colSL.ReadOnly = true;
+            // 
+            // ColCounterName
+            // 
+            this.ColCounterName.FillWeight = 250F;
+            this.ColCounterName.HeaderText = "Counter Name";
+            this.ColCounterName.Name = "ColCounterName";
+            this.ColCounterName.ReadOnly = true;
+            this.ColCounterName.Width = 250;
+            // 
+            // ColNextConterDistance
+            // 
+            this.ColNextConterDistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNextConterDistance.HeaderText = "Next Conter Distance";
+            this.ColNextConterDistance.Name = "ColNextConterDistance";
+            this.ColNextConterDistance.ReadOnly = true;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Image = ((System.Drawing.Image)(resources.GetObject("colDelete.Image")));
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -435,41 +470,6 @@
             this.txtSerialNo.Size = new System.Drawing.Size(70, 20);
             this.txtSerialNo.TabIndex = 1;
             this.txtSerialNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSerialNo_KeyPress);
-            // 
-            // colCounterID
-            // 
-            this.colCounterID.HeaderText = "CounterID";
-            this.colCounterID.Name = "colCounterID";
-            this.colCounterID.ReadOnly = true;
-            this.colCounterID.Visible = false;
-            // 
-            // colSL
-            // 
-            this.colSL.HeaderText = "SL";
-            this.colSL.Name = "colSL";
-            this.colSL.ReadOnly = true;
-            // 
-            // ColCounterName
-            // 
-            this.ColCounterName.FillWeight = 250F;
-            this.ColCounterName.HeaderText = "Counter Name";
-            this.ColCounterName.Name = "ColCounterName";
-            this.ColCounterName.ReadOnly = true;
-            this.ColCounterName.Width = 250;
-            // 
-            // ColNextConterDistance
-            // 
-            this.ColNextConterDistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNextConterDistance.HeaderText = "Next Conter Distance";
-            this.ColNextConterDistance.Name = "ColNextConterDistance";
-            this.ColNextConterDistance.ReadOnly = true;
-            // 
-            // colDelete
-            // 
-            this.colDelete.HeaderText = "";
-            this.colDelete.Image = ((System.Drawing.Image)(resources.GetObject("colDelete.Image")));
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
             // 
             // FormRouteInfo
             // 

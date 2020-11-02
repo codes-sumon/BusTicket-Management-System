@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelTop = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSideMenu = new System.Windows.Forms.Panel();
@@ -46,13 +47,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.dgvFindBus = new System.Windows.Forms.DataGridView();
-            this.colTripID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRouteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFindBus = new System.Windows.Forms.Button();
             this.cmbTo = new System.Windows.Forms.ComboBox();
             this.cmbFrom = new System.Windows.Forms.ComboBox();
@@ -60,6 +54,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpSearchDatetime = new System.Windows.Forms.DateTimePicker();
+            this.colTripID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAvailable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRouteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBuy = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelTop.SuspendLayout();
             this.panelSideMenu.SuspendLayout();
             this.panelSetup.SuspendLayout();
@@ -334,49 +335,7 @@
             this.dgvFindBus.RowTemplate.Height = 30;
             this.dgvFindBus.Size = new System.Drawing.Size(761, 319);
             this.dgvFindBus.TabIndex = 12;
-            // 
-            // colTripID
-            // 
-            this.colTripID.HeaderText = "Coach";
-            this.colTripID.Name = "colTripID";
-            this.colTripID.ReadOnly = true;
-            // 
-            // colDate
-            // 
-            this.colDate.HeaderText = "Date";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            // 
-            // colSeats
-            // 
-            this.colSeats.HeaderText = "Seats";
-            this.colSeats.Name = "colSeats";
-            this.colSeats.ReadOnly = true;
-            // 
-            // colAvailable
-            // 
-            this.colAvailable.HeaderText = "Available";
-            this.colAvailable.Name = "colAvailable";
-            this.colAvailable.ReadOnly = true;
-            // 
-            // colRouteName
-            // 
-            this.colRouteName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colRouteName.HeaderText = "Route Name";
-            this.colRouteName.Name = "colRouteName";
-            this.colRouteName.ReadOnly = true;
-            // 
-            // colFare
-            // 
-            this.colFare.HeaderText = "Fare";
-            this.colFare.Name = "colFare";
-            this.colFare.ReadOnly = true;
-            // 
-            // colBuy
-            // 
-            this.colBuy.HeaderText = "Buy";
-            this.colBuy.Name = "colBuy";
-            this.colBuy.ReadOnly = true;
+            this.dgvFindBus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFindBus_CellClick);
             // 
             // btnFindBus
             // 
@@ -451,6 +410,52 @@
             this.dtpSearchDatetime.TabIndex = 1;
             this.dtpSearchDatetime.Value = new System.DateTime(2020, 11, 1, 3, 8, 5, 0);
             // 
+            // colTripID
+            // 
+            this.colTripID.HeaderText = "Coach";
+            this.colTripID.Name = "colTripID";
+            this.colTripID.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            this.colDate.HeaderText = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            // 
+            // colSeats
+            // 
+            this.colSeats.HeaderText = "Seats";
+            this.colSeats.Name = "colSeats";
+            this.colSeats.ReadOnly = true;
+            // 
+            // colAvailable
+            // 
+            this.colAvailable.HeaderText = "Available";
+            this.colAvailable.Name = "colAvailable";
+            this.colAvailable.ReadOnly = true;
+            // 
+            // colRouteName
+            // 
+            this.colRouteName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colRouteName.HeaderText = "Route Name";
+            this.colRouteName.Name = "colRouteName";
+            this.colRouteName.ReadOnly = true;
+            // 
+            // colFare
+            // 
+            this.colFare.HeaderText = "Fare";
+            this.colFare.Name = "colFare";
+            this.colFare.ReadOnly = true;
+            // 
+            // colBuy
+            // 
+            this.colBuy.HeaderText = "Buy";
+            this.colBuy.Image = ((System.Drawing.Image)(resources.GetObject("colBuy.Image")));
+            this.colBuy.Name = "colBuy";
+            this.colBuy.ReadOnly = true;
+            this.colBuy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colBuy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,13 +503,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnFindBus;
         private System.Windows.Forms.DataGridView dgvFindBus;
+        private System.Windows.Forms.Button btnUserRegister;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTripID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSeats;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAvailable;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRouteName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFare;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBuy;
-        private System.Windows.Forms.Button btnUserRegister;
+        private System.Windows.Forms.DataGridViewImageColumn colBuy;
     }
 }

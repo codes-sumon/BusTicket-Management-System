@@ -14,6 +14,12 @@ namespace BusTicket
     
     public partial class TripInfoTB
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TripInfoTB()
+        {
+            this.TicketSalesInfoTBs = new HashSet<TicketSalesInfoTB>();
+        }
+    
         public int ID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> PerSitPrice { get; set; }
@@ -29,5 +35,7 @@ namespace BusTicket
         public virtual DriverInfoTB DriverInfoTB { get; set; }
         public virtual RouteInfoTB RouteInfoTB { get; set; }
         public virtual SuperViseorInfoTB SuperViseorInfoTB { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TicketSalesInfoTB> TicketSalesInfoTBs { get; set; }
     }
 }
