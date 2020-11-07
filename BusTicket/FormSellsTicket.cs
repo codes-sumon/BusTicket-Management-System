@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace BusTicket
 {
     public partial class FormSellsTicket : Form
     {
+        public int MstID { get; set; }
         public int FTripID { get; set; }
         public string fstarttime { get; set; }
         public decimal PerSeatPrice { get; set; }
@@ -317,12 +319,66 @@ namespace BusTicket
                         {
                             btnA2.Visible = btnB2.Visible = btnC2.Visible = btnD2.Visible = btnE2.Visible = btnF2.Visible = btnG2.Visible 
                                 = btnH2.Visible = btnI2.Visible = false;
+                            
+                                btnA4.Text = btnA3.Text;
+                                btnA3.Text = btnA2.Text;
+
+                                btnB4.Text = btnB3.Text;
+                                btnB3.Text = btnB2.Text;
+
+                                btnC4.Text = btnC3.Text;
+                                btnC3.Text = btnC2.Text;
+
+                                btnD4.Text = btnD3.Text;
+                                btnD3.Text = btnD2.Text;
+
+                                btnE4.Text = btnE3.Text;
+                                btnE3.Text = btnE2.Text;
+
+                                btnF4.Text = btnF3.Text;
+                                btnF3.Text = btnF2.Text;
+
+                                btnG4.Text = btnG3.Text;
+                                btnG3.Text = btnG2.Text;
+
+                                btnH4.Text = btnH3.Text;
+                                btnH3.Text = btnH2.Text;
+
+                                btnI4.Text = btnI3.Text;
+                                btnI3.Text = btnI2.Text;
                         }
 
                        else  if (atrip.BusInfoTB.TotalSits == 28)
                         {
                             btnA2.Visible = btnB2.Visible = btnC2.Visible = btnD2.Visible = btnE2.Visible = btnF2.Visible = btnG2.Visible = btnH2.Visible = false;
                             btnJ1.Visible = btnJ2.Visible = btnJ3.Visible = btnJ4.Visible = false;
+
+                            btnA4.Text = btnA3.Text;
+                            btnA3.Text = btnA2.Text;
+
+                            btnB4.Text = btnB3.Text;
+                            btnB3.Text = btnB2.Text;
+
+                            btnC4.Text = btnC3.Text;
+                            btnC3.Text = btnC2.Text;
+
+                            btnD4.Text = btnD3.Text;
+                            btnD3.Text = btnD2.Text;
+
+                            btnE4.Text = btnE3.Text;
+                            btnE3.Text = btnE2.Text;
+
+                            btnF4.Text = btnF3.Text;
+                            btnF3.Text = btnF2.Text;
+
+                            btnG4.Text = btnG3.Text;
+                            btnG3.Text = btnG2.Text;
+
+                            btnH4.Text = btnH3.Text;
+                            btnH3.Text = btnH2.Text;
+
+                            btnI4.Text = btnI3.Text;
+                            btnI3.Text = btnI2.Text;
                         }
                     }
                     PerSeatPrice = Convert.ToDecimal(atrip.PerSitPrice);
@@ -361,7 +417,31 @@ namespace BusTicket
                 MessageBox.Show("Please Select Atleast 1 Seat", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (MstID > 0)
+            {
+                using (BusDBEntities db = new BusDBEntities())
+                {
+                    TicketSelesDeteil aticketSelesDeteil;
+                    aticketSelesDeteil = db.TicketSelesDeteils.SingleOrDefault(a => a.TicketSalesInfoID == MstID && a.TicketSalesInfoTB.TripID == FTripID);
+                    if (aticketSelesDeteil != null)
+                    {
+                        db.TicketSelesDeteils.Remove(aticketSelesDeteil);
+                        db.SaveChanges();
 
+
+                        TicketSalesInfoTB aTicketSalesInfoTB;
+                        aTicketSalesInfoTB = db.TicketSalesInfoTBs.SingleOrDefault(a => a.ID == MstID && a.TripID == FTripID);
+                        if (aticketSelesDeteil != null)
+                        {
+                            db.TicketSalesInfoTBs.Remove(aTicketSalesInfoTB);
+                            db.SaveChanges();
+                            MstID = 0;
+
+                        }
+
+                    }
+                }
+            }
 
             try
             {
@@ -388,14 +468,12 @@ namespace BusTicket
               
                         db.TicketSalesInfoTBs.Add(aTicketSalesInfoTB);
 
-                        
                         if (dgvSelectedSits.Rows.Count > 0)
                         {
                             db.SaveChanges();
                             TicketSelesDeteil aTicketSelesDeteil;
                             foreach (DataGridViewRow dr in dgvSelectedSits.Rows)
                             {
-
                                 aTicketSelesDeteil = new TicketSelesDeteil();
 
                                 aTicketSelesDeteil.TicketSalesInfoID = aTicketSalesInfoTB.ID;
@@ -407,12 +485,12 @@ namespace BusTicket
                         }
                         else
                         {
+                            cmbBoxload();
                             MessageBox.Show("Save Succesfully");
                             return;
                         }
-                        
+                        cmbBoxload();
                         MessageBox.Show("Save Succesfully");
-
                     }
                 }
             }
@@ -420,6 +498,8 @@ namespace BusTicket
             {
                 MessageBox.Show(ex.Message);
             }
+
+            Print(this.panel1);
         }
 
         private void btnBookSits_Click(object sender, EventArgs e)
@@ -468,7 +548,6 @@ namespace BusTicket
                             TicketSelesDeteil aTicketSelesDeteil;
                             foreach (DataGridViewRow dr in dgvSelectedSits.Rows)
                             {
-
                                 aTicketSelesDeteil = new TicketSelesDeteil();
 
                                 aTicketSelesDeteil.TicketSalesInfoID = aTicketSalesInfoTB.ID;
@@ -480,12 +559,12 @@ namespace BusTicket
                         }
                         else
                         {
+                            cmbBoxload();
                             MessageBox.Show("Save Succesfully");
                             return;
                         }
-
+                        cmbBoxload();
                         MessageBox.Show("Save Succesfully");
-
                     }
                 }
             }
@@ -497,7 +576,31 @@ namespace BusTicket
 
         private void btnUnBook_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are You Sure to Delete this Record ?", "EF CRUD Operation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                using (BusDBEntities db = new BusDBEntities())
+                {
+                    TicketSelesDeteil aticketSelesDeteil;
+                    aticketSelesDeteil = db.TicketSelesDeteils.SingleOrDefault(a => a.TicketSalesInfoID ==MstID  && a.TicketSalesInfoTB.TripID == FTripID);
+                    if (aticketSelesDeteil != null)
+                    {
+                         db.TicketSelesDeteils.Remove(aticketSelesDeteil);
+                         db.SaveChanges();
 
+                       
+                            TicketSalesInfoTB aTicketSalesInfoTB;
+                            aTicketSalesInfoTB = db.TicketSalesInfoTBs.SingleOrDefault(a => a.ID == MstID && a.TripID == FTripID);
+                            if (aticketSelesDeteil != null)
+                            {
+                                db.TicketSalesInfoTBs.Remove(aTicketSalesInfoTB);
+                                db.SaveChanges();
+                                MstID = 0;
+
+                            }
+                     
+                    }
+                }
+            }
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -506,8 +609,7 @@ namespace BusTicket
 
         private void btnA1_Click(object sender, EventArgs e)
         {
-            selectbutton(btnA1);
-            //dgvSelectedSits.Rows.Add(cmbAddCounter.SelectedValue, txtSerialNo.Text, cmbAddCounter.Text, txtcounterdistance.Text);
+            selectbutton(btnA1);//dgvSelectedSits.Rows.Add(cmbAddCounter.SelectedValue, txtSerialNo.Text, cmbAddCounter.Text, txtcounterdistance.Text);
         }
 
         void selectbutton(Button btn)
@@ -550,6 +652,7 @@ namespace BusTicket
                             cmbGender.Text = aticketSelesDeteil.TicketSalesInfoTB.Gender;
                             txtAge.Text = aticketSelesDeteil.TicketSalesInfoTB.Age;
                             txtAddress.Text = aticketSelesDeteil.TicketSalesInfoTB.Address;
+                            MstID = (int)aticketSelesDeteil.TicketSalesInfoID;
                         }
                     }
 
@@ -570,7 +673,6 @@ namespace BusTicket
                             break;
                         }
                     }
-
                 }
                 else
                 {
@@ -799,6 +901,34 @@ namespace BusTicket
                     txtAddress.Text = aTicketSale.Address;
                 }
             }
+        }
+
+
+        //Ticket Printing Code
+
+        PrintPreviewDialog prntprvw = new PrintPreviewDialog();
+        PrintDocument pntdo = new PrintDocument();
+
+        public void Print(Panel pnl)
+        {
+            PrinterSettings ps = new PrinterSettings();
+            panel1 = pnl;
+            getprintarea(pnl);
+            prntprvw.Document = pntdoc;
+            pntdoc.PrintPage += new PrintPageEventHandler(pntdoc_PrintPage);
+            prntprvw.ShowDialog();
+        }
+        Bitmap memoryimg;
+        public void getprintarea(Panel pnl)
+        {
+            memoryimg = new Bitmap(pnl.Width, pnl.Height);
+            pnl.DrawToBitmap(memoryimg, new Rectangle(0, 0, pnl.Width, pnl.Height));
+        }
+
+        private void pntdoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pagearea = e.PageBounds;
+            e.Graphics.DrawImage(memoryimg, (pagearea.Width / 2) - (this.panel1.Width / 2), this.panel1.Location.Y);
         }
     }
 }
