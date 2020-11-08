@@ -43,6 +43,7 @@ namespace BusTicket
                     model.Mobile = txtMobile.Text.Trim();
                     model.Password = passwordManager.Encrypt(txtPassword.Text);
                     model.AccountType = cmbAccountType.Text.Trim();
+                    model.IsActive = true;
 
               
                     db.UserInfoTBs.Add(model);

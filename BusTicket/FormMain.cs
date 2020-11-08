@@ -8,15 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using View.DBManager;
 
 namespace BusTicket
 {
     public partial class FormMain : Form
     {
+        public string UserType { get; set; }
         public FormMain()
         {
             InitializeComponent();
             countomizeDesign();
+            UserType = Global.LoggedInUser.AccountType;
         }
         private void countomizeDesign()
         {
@@ -135,6 +138,13 @@ namespace BusTicket
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+
+            if (UserType != "Admin")
+            {
+                btnSetup.Visible = false;
+                btnUserRegister.Visible = false;
+            }
+
             dgvFindBus.Visible = false;
             comboLoadData();
         }
@@ -180,6 +190,21 @@ namespace BusTicket
 
             FormSellsTicket a = new FormSellsTicket(ID, (int)cmbFrom.SelectedValue, (int)cmbTo.SelectedValue, dtpSearchDatetime.Value, dgvFindBus.Rows[e.RowIndex].Cells[1].Value.ToString());
             a.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormLogin ss = new FormLogin();
+            ss.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormLogin ss = new FormLogin();
+            ss.Close();
+            Application.Exit();
         }
     }
 }

@@ -21,5 +21,6 @@ namespace BusTicket
         public string Mobile { get; set; }
         public string Password { get; set; }
         public string AccountType { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

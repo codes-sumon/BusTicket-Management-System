@@ -194,5 +194,6 @@ namespace View.DBManager
         public static int MainBranchID { get; set; }
 
         public static int MstID { get; set; }
+        public static BusTicket.UserInfoTB LoggedInUser { get; internal set; }
     }
 }

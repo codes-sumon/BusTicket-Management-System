@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelTop = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnUserRegister = new System.Windows.Forms.Button();
             this.panelSetup = new System.Windows.Forms.Panel();
             this.btnTripSetup = new System.Windows.Forms.Button();
@@ -47,13 +49,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.dgvFindBus = new System.Windows.Forms.DataGridView();
-            this.btnFindBus = new System.Windows.Forms.Button();
-            this.cmbTo = new System.Windows.Forms.ComboBox();
-            this.cmbFrom = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpSearchDatetime = new System.Windows.Forms.DateTimePicker();
             this.colTripID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +56,13 @@
             this.colRouteName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBuy = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnFindBus = new System.Windows.Forms.Button();
+            this.cmbTo = new System.Windows.Forms.ComboBox();
+            this.cmbFrom = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpSearchDatetime = new System.Windows.Forms.DateTimePicker();
             this.panelTop.SuspendLayout();
             this.panelSideMenu.SuspendLayout();
             this.panelSetup.SuspendLayout();
@@ -92,6 +94,8 @@
             // panelSideMenu
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.panelSideMenu.Controls.Add(this.btnExit);
+            this.panelSideMenu.Controls.Add(this.btnLogout);
             this.panelSideMenu.Controls.Add(this.btnUserRegister);
             this.panelSideMenu.Controls.Add(this.panelSetup);
             this.panelSideMenu.Controls.Add(this.btnSetup);
@@ -99,8 +103,46 @@
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 50);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(205, 461);
+            this.panelSideMenu.Size = new System.Drawing.Size(205, 494);
             this.panelSideMenu.TabIndex = 1;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(0, 449);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnExit.Size = new System.Drawing.Size(205, 45);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Exit";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 381);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnLogout.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnLogout.Size = new System.Drawing.Size(205, 45);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnUserRegister
             // 
@@ -288,28 +330,28 @@
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(205, 50);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(779, 461);
+            this.panelChildForm.Size = new System.Drawing.Size(779, 494);
             this.panelChildForm.TabIndex = 2;
             // 
             // dgvFindBus
             // 
             this.dgvFindBus.AllowUserToAddRows = false;
             this.dgvFindBus.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvFindBus.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvFindBus.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFindBus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFindBus.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFindBus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFindBus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFindBus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFindBus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTripID,
@@ -319,96 +361,23 @@
             this.colRouteName,
             this.colFare,
             this.colBuy});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFindBus.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFindBus.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFindBus.Location = new System.Drawing.Point(6, 130);
             this.dgvFindBus.Name = "dgvFindBus";
             this.dgvFindBus.ReadOnly = true;
             this.dgvFindBus.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvFindBus.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvFindBus.RowTemplate.Height = 30;
-            this.dgvFindBus.Size = new System.Drawing.Size(761, 319);
-            this.dgvFindBus.TabIndex = 12;
+            this.dgvFindBus.Size = new System.Drawing.Size(761, 352);
+            this.dgvFindBus.TabIndex = 0;
             this.dgvFindBus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFindBus_CellClick);
-            // 
-            // btnFindBus
-            // 
-            this.btnFindBus.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindBus.ForeColor = System.Drawing.Color.Black;
-            this.btnFindBus.Location = new System.Drawing.Point(538, 61);
-            this.btnFindBus.Name = "btnFindBus";
-            this.btnFindBus.Size = new System.Drawing.Size(219, 36);
-            this.btnFindBus.TabIndex = 6;
-            this.btnFindBus.Text = "Find Bus";
-            this.btnFindBus.UseVisualStyleBackColor = true;
-            this.btnFindBus.Click += new System.EventHandler(this.btnFindBus_Click);
-            // 
-            // cmbTo
-            // 
-            this.cmbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTo.FormattingEnabled = true;
-            this.cmbTo.Location = new System.Drawing.Point(220, 69);
-            this.cmbTo.Name = "cmbTo";
-            this.cmbTo.Size = new System.Drawing.Size(223, 24);
-            this.cmbTo.TabIndex = 5;
-            // 
-            // cmbFrom
-            // 
-            this.cmbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFrom.FormattingEnabled = true;
-            this.cmbFrom.Location = new System.Drawing.Point(220, 26);
-            this.cmbFrom.Name = "cmbFrom";
-            this.cmbFrom.Size = new System.Drawing.Size(223, 24);
-            this.cmbFrom.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(172, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "To*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(449, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 16);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Select Date*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(170, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "From*";
-            // 
-            // dtpSearchDatetime
-            // 
-            this.dtpSearchDatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpSearchDatetime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSearchDatetime.Location = new System.Drawing.Point(538, 26);
-            this.dtpSearchDatetime.Name = "dtpSearchDatetime";
-            this.dtpSearchDatetime.Size = new System.Drawing.Size(219, 22);
-            this.dtpSearchDatetime.TabIndex = 1;
-            this.dtpSearchDatetime.Value = new System.DateTime(2020, 11, 1, 3, 8, 5, 0);
             // 
             // colTripID
             // 
@@ -456,18 +425,93 @@
             this.colBuy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colBuy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // btnFindBus
+            // 
+            this.btnFindBus.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindBus.ForeColor = System.Drawing.Color.Black;
+            this.btnFindBus.Location = new System.Drawing.Point(538, 61);
+            this.btnFindBus.Name = "btnFindBus";
+            this.btnFindBus.Size = new System.Drawing.Size(219, 36);
+            this.btnFindBus.TabIndex = 7;
+            this.btnFindBus.Text = "Find Bus";
+            this.btnFindBus.UseVisualStyleBackColor = true;
+            this.btnFindBus.Click += new System.EventHandler(this.btnFindBus_Click);
+            // 
+            // cmbTo
+            // 
+            this.cmbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTo.FormattingEnabled = true;
+            this.cmbTo.Location = new System.Drawing.Point(220, 69);
+            this.cmbTo.Name = "cmbTo";
+            this.cmbTo.Size = new System.Drawing.Size(223, 24);
+            this.cmbTo.TabIndex = 6;
+            // 
+            // cmbFrom
+            // 
+            this.cmbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFrom.FormattingEnabled = true;
+            this.cmbFrom.Location = new System.Drawing.Point(220, 26);
+            this.cmbFrom.Name = "cmbFrom";
+            this.cmbFrom.Size = new System.Drawing.Size(223, 24);
+            this.cmbFrom.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(172, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "To*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(449, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Select Date*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(170, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "From*";
+            // 
+            // dtpSearchDatetime
+            // 
+            this.dtpSearchDatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSearchDatetime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSearchDatetime.Location = new System.Drawing.Point(538, 26);
+            this.dtpSearchDatetime.Name = "dtpSearchDatetime";
+            this.dtpSearchDatetime.Size = new System.Drawing.Size(219, 22);
+            this.dtpSearchDatetime.TabIndex = 5;
+            this.dtpSearchDatetime.Value = new System.DateTime(2020, 11, 1, 3, 8, 5, 0);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(984, 511);
+            this.ClientSize = new System.Drawing.Size(984, 544);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelSideMenu);
             this.Controls.Add(this.panelTop);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -511,5 +555,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colRouteName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFare;
         private System.Windows.Forms.DataGridViewImageColumn colBuy;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnExit;
     }
 }

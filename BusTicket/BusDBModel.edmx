@@ -117,6 +117,7 @@
           <Property Name="Mobile" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="AccountType" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <Association Name="FK_RouteDetailsTB_RouteInfoTB">
           <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="0..1" />
@@ -282,7 +283,6 @@
           <EntitySet Name="TicketSalesInfoTBs" EntityType="BusDBModel.TicketSalesInfoTB" />
           <EntitySet Name="TicketSelesDeteils" EntityType="BusDBModel.TicketSelesDeteil" />
           <EntitySet Name="TripInfoTBs" EntityType="BusDBModel.TripInfoTB" />
-          <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
           <AssociationSet Name="FK_TripInfoTB_BusInfoTB" Association="BusDBModel.FK_TripInfoTB_BusInfoTB">
             <End Role="BusInfoTB" EntitySet="BusInfoTBs" />
             <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
@@ -315,6 +315,7 @@
             <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTBs" />
             <End Role="TicketSelesDeteil" EntitySet="TicketSelesDeteils" />
           </AssociationSet>
+          <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
           </EntityContainer>
         <ComplexType Name="GetTripInformation_Result">
           <Property Type="Int32" Name="Coach" Nullable="false" />
@@ -445,18 +446,6 @@
           <NavigationProperty Name="SuperViseorInfoTB" Relationship="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" FromRole="TripInfoTB" ToRole="SuperViseorInfoTB" />
           <NavigationProperty Name="TicketSalesInfoTBs" Relationship="BusDBModel.FK_TicketSalesInfoTB_TripInfoTB" FromRole="TripInfoTB" ToRole="TicketSalesInfoTB" />
         </EntityType>
-        <EntityType Name="UserInfoTB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_TripInfoTB_BusInfoTB">
           <End Type="BusDBModel.BusInfoTB" Role="BusInfoTB" Multiplicity="0..1" />
           <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="*" />
@@ -553,6 +542,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -688,6 +690,7 @@
           <EntitySetMapping Name="UserInfoTBs">
             <EntityTypeMapping TypeName="BusDBModel.UserInfoTB">
               <MappingFragment StoreEntitySet="UserInfoTB">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />

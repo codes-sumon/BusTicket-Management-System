@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
+using View.DBManager;
 
 namespace BusTicket
 {
@@ -463,6 +464,7 @@ namespace BusTicket
                         aTicketSalesInfoTB.TotalFare = Convert.ToDecimal(labelTotalPayable.Text);
                         aTicketSalesInfoTB.TotalSeat = dgvSelectedSits.Rows.Count;
                         aTicketSalesInfoTB.IsSalle = true;
+                        aTicketSalesInfoTB.SaleBy = Global.LoggedInUser.ID;
                         aTicketSalesInfoTB.TripID = FTripID;
                        aTicketSalesInfoTB.BoardingTime = Convert.ToDateTime(txtBoardingTime.Text);
               
@@ -929,6 +931,22 @@ namespace BusTicket
         {
             Rectangle pagearea = e.PageBounds;
             e.Graphics.DrawImage(memoryimg, (pagearea.Width / 2) - (this.panel1.Width / 2), this.panel1.Location.Y);
+        }
+
+        private void txtMobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
