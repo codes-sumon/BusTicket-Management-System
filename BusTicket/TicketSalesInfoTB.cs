@@ -35,8 +35,10 @@ namespace BusTicket
         public Nullable<int> TripID { get; set; }
         public Nullable<int> SaleBy { get; set; }
         public Nullable<bool> IsSalle { get; set; }
+        public Nullable<System.DateTime> TicketSaleTime { get; set; }
     
         public virtual TripInfoTB TripInfoTB { get; set; }
+        public virtual UserInfoTB UserInfoTB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TicketSelesDeteil> TicketSelesDeteils { get; set; }
     }

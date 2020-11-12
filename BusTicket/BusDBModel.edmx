@@ -81,6 +81,7 @@
           <Property Name="TripID" Type="int" />
           <Property Name="SaleBy" Type="int" />
           <Property Name="IsSalle" Type="bit" />
+          <Property Name="TicketSaleTime" Type="datetime" />
         </EntityType>
         <EntityType Name="TicketSelesDeteils">
           <Key>
@@ -119,6 +120,17 @@
           <Property Name="AccountType" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'BusTicketDB.dbo.View_TicketSalesInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_TicketSalesInfo">
+          <Property Name="CustomerName" Type="varchar" MaxLength="150" />
+          <Property Name="SitsPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BusSitNumber" Type="varchar" MaxLength="10" />
+          <Property Name="BoardingTime" Type="datetime" />
+          <Property Name="routName" Type="varchar" MaxLength="250" />
+          <Property Name="BusName" Type="varchar" MaxLength="50" />
+          <Property Name="PrepairedBy" Type="varchar" MaxLength="250" />
+        </EntityType>-->
         <Association Name="FK_RouteDetailsTB_RouteInfoTB">
           <End Role="RouteInfoTB" Type="Self.RouteInfoTB" Multiplicity="0..1" />
           <End Role="RouteDetailsTB" Type="Self.RouteDetailsTB" Multiplicity="*" />
@@ -152,6 +164,18 @@
             </Principal>
             <Dependent Role="TicketSalesInfoTB">
               <PropertyRef Name="TripID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketSalesInfoTB_UserInfoTB">
+          <End Role="UserInfoTB" Type="Self.UserInfoTB" Multiplicity="0..1" />
+          <End Role="TicketSalesInfoTB" Type="Self.TicketSalesInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TicketSalesInfoTB">
+              <PropertyRef Name="SaleBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -243,6 +267,10 @@
             <End Role="TripInfoTB" EntitySet="TripInfoTB" />
             <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTB" />
           </AssociationSet>
+          <AssociationSet Name="FK_TicketSalesInfoTB_UserInfoTB" Association="Self.FK_TicketSalesInfoTB_UserInfoTB">
+            <End Role="UserInfoTB" EntitySet="UserInfoTB" />
+            <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTB" />
+          </AssociationSet>
           <AssociationSet Name="FK_TicketSelesDeteils_TicketSalesInfoTB" Association="Self.FK_TicketSelesDeteils_TicketSalesInfoTB">
             <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTB" />
             <End Role="TicketSelesDeteils" EntitySet="TicketSelesDeteils" />
@@ -280,7 +308,6 @@
           <EntitySet Name="RouteDetailsTBs" EntityType="BusDBModel.RouteDetailsTB" />
           <EntitySet Name="RouteInfoTBs" EntityType="BusDBModel.RouteInfoTB" />
           <EntitySet Name="SuperViseorInfoTBs" EntityType="BusDBModel.SuperViseorInfoTB" />
-          <EntitySet Name="TicketSalesInfoTBs" EntityType="BusDBModel.TicketSalesInfoTB" />
           <EntitySet Name="TicketSelesDeteils" EntityType="BusDBModel.TicketSelesDeteil" />
           <EntitySet Name="TripInfoTBs" EntityType="BusDBModel.TripInfoTB" />
           <AssociationSet Name="FK_TripInfoTB_BusInfoTB" Association="BusDBModel.FK_TripInfoTB_BusInfoTB">
@@ -307,15 +334,20 @@
             <End Role="SuperViseorInfoTB" EntitySet="SuperViseorInfoTBs" />
             <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
           </AssociationSet>
+          <EntitySet Name="TicketSalesInfoTBs" EntityType="BusDBModel.TicketSalesInfoTB" />
+          <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
           <AssociationSet Name="FK_TicketSalesInfoTB_TripInfoTB" Association="BusDBModel.FK_TicketSalesInfoTB_TripInfoTB">
             <End Role="TripInfoTB" EntitySet="TripInfoTBs" />
+            <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketSalesInfoTB_UserInfoTB" Association="BusDBModel.FK_TicketSalesInfoTB_UserInfoTB">
+            <End Role="UserInfoTB" EntitySet="UserInfoTBs" />
             <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTBs" />
           </AssociationSet>
           <AssociationSet Name="FK_TicketSelesDeteils_TicketSalesInfoTB" Association="BusDBModel.FK_TicketSelesDeteils_TicketSalesInfoTB">
             <End Role="TicketSalesInfoTB" EntitySet="TicketSalesInfoTBs" />
             <End Role="TicketSelesDeteil" EntitySet="TicketSelesDeteils" />
           </AssociationSet>
-          <EntitySet Name="UserInfoTBs" EntityType="BusDBModel.UserInfoTB" />
           </EntityContainer>
         <ComplexType Name="GetTripInformation_Result">
           <Property Type="Int32" Name="Coach" Nullable="false" />
@@ -393,28 +425,6 @@
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TripInfoTBs" Relationship="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" FromRole="SuperViseorInfoTB" ToRole="TripInfoTB" />
-        </EntityType>
-        <EntityType Name="TicketSalesInfoTB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="Boarding" Type="Int32" />
-          <Property Name="Droping" Type="Int32" />
-          <Property Name="TotalFare" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TotalSeat" Type="Int32" />
-          <Property Name="BoardingTime" Type="DateTime" Precision="3" />
-          <Property Name="TripID" Type="Int32" />
-          <Property Name="SaleBy" Type="Int32" />
-          <Property Name="IsSalle" Type="Boolean" />
-          <NavigationProperty Name="TripInfoTB" Relationship="BusDBModel.FK_TicketSalesInfoTB_TripInfoTB" FromRole="TicketSalesInfoTB" ToRole="TripInfoTB" />
-          <NavigationProperty Name="TicketSelesDeteils" Relationship="BusDBModel.FK_TicketSelesDeteils_TicketSalesInfoTB" FromRole="TicketSalesInfoTB" ToRole="TicketSelesDeteil" />
         </EntityType>
         <EntityType Name="TicketSelesDeteil">
           <Key>
@@ -518,6 +528,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TicketSalesInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Boarding" Type="Int32" />
+          <Property Name="Droping" Type="Int32" />
+          <Property Name="TotalFare" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSeat" Type="Int32" />
+          <Property Name="BoardingTime" Type="DateTime" Precision="3" />
+          <Property Name="TripID" Type="Int32" />
+          <Property Name="SaleBy" Type="Int32" />
+          <Property Name="IsSalle" Type="Boolean" />
+          <Property Name="TicketSaleTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TripInfoTB" Relationship="BusDBModel.FK_TicketSalesInfoTB_TripInfoTB" FromRole="TicketSalesInfoTB" ToRole="TripInfoTB" />
+          <NavigationProperty Name="UserInfoTB" Relationship="BusDBModel.FK_TicketSalesInfoTB_UserInfoTB" FromRole="TicketSalesInfoTB" ToRole="UserInfoTB" />
+          <NavigationProperty Name="TicketSelesDeteils" Relationship="BusDBModel.FK_TicketSelesDeteils_TicketSalesInfoTB" FromRole="TicketSalesInfoTB" ToRole="TicketSelesDeteil" />
+        </EntityType>
+        <EntityType Name="UserInfoTB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="TicketSalesInfoTBs" Relationship="BusDBModel.FK_TicketSalesInfoTB_UserInfoTB" FromRole="UserInfoTB" ToRole="TicketSalesInfoTB" />
+        </EntityType>
         <Association Name="FK_TicketSalesInfoTB_TripInfoTB">
           <End Type="BusDBModel.TripInfoTB" Role="TripInfoTB" Multiplicity="0..1" />
           <End Type="BusDBModel.TicketSalesInfoTB" Role="TicketSalesInfoTB" Multiplicity="*" />
@@ -527,6 +575,18 @@
             </Principal>
             <Dependent Role="TicketSalesInfoTB">
               <PropertyRef Name="TripID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketSalesInfoTB_UserInfoTB">
+          <End Type="BusDBModel.UserInfoTB" Role="UserInfoTB" Multiplicity="0..1" />
+          <End Type="BusDBModel.TicketSalesInfoTB" Role="TicketSalesInfoTB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfoTB">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TicketSalesInfoTB">
+              <PropertyRef Name="SaleBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -542,19 +602,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="UserInfoTB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -640,27 +687,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TicketSalesInfoTBs">
-            <EntityTypeMapping TypeName="BusDBModel.TicketSalesInfoTB">
-              <MappingFragment StoreEntitySet="TicketSalesInfoTB">
-                <ScalarProperty Name="IsSalle" ColumnName="IsSalle" />
-                <ScalarProperty Name="SaleBy" ColumnName="SaleBy" />
-                <ScalarProperty Name="TripID" ColumnName="TripID" />
-                <ScalarProperty Name="BoardingTime" ColumnName="BoardingTime" />
-                <ScalarProperty Name="TotalSeat" ColumnName="TotalSeat" />
-                <ScalarProperty Name="TotalFare" ColumnName="TotalFare" />
-                <ScalarProperty Name="Droping" ColumnName="Droping" />
-                <ScalarProperty Name="Boarding" ColumnName="Boarding" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TicketSelesDeteils">
             <EntityTypeMapping TypeName="BusDBModel.TicketSelesDeteil">
               <MappingFragment StoreEntitySet="TicketSelesDeteils">
@@ -683,6 +709,28 @@
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="PerSitPrice" ColumnName="PerSitPrice" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketSalesInfoTBs">
+            <EntityTypeMapping TypeName="BusDBModel.TicketSalesInfoTB">
+              <MappingFragment StoreEntitySet="TicketSalesInfoTB">
+                <ScalarProperty Name="TicketSaleTime" ColumnName="TicketSaleTime" />
+                <ScalarProperty Name="IsSalle" ColumnName="IsSalle" />
+                <ScalarProperty Name="SaleBy" ColumnName="SaleBy" />
+                <ScalarProperty Name="TripID" ColumnName="TripID" />
+                <ScalarProperty Name="BoardingTime" ColumnName="BoardingTime" />
+                <ScalarProperty Name="TotalSeat" ColumnName="TotalSeat" />
+                <ScalarProperty Name="TotalFare" ColumnName="TotalFare" />
+                <ScalarProperty Name="Droping" ColumnName="Droping" />
+                <ScalarProperty Name="Boarding" ColumnName="Boarding" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

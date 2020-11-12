@@ -321,32 +321,32 @@ namespace BusTicket
                             btnA2.Visible = btnB2.Visible = btnC2.Visible = btnD2.Visible = btnE2.Visible = btnF2.Visible = btnG2.Visible 
                                 = btnH2.Visible = btnI2.Visible = false;
                             
-                                btnA4.Text = btnA3.Text;
-                                btnA3.Text = btnA2.Text;
+                                //btnA4.Text = btnA3.Text;
+                                //btnA3.Text = btnA2.Text;
 
-                                btnB4.Text = btnB3.Text;
-                                btnB3.Text = btnB2.Text;
+                                //btnB4.Text = btnB3.Text;
+                                //btnB3.Text = btnB2.Text;
 
-                                btnC4.Text = btnC3.Text;
-                                btnC3.Text = btnC2.Text;
+                                //btnC4.Text = btnC3.Text;
+                                //btnC3.Text = btnC2.Text;
 
-                                btnD4.Text = btnD3.Text;
-                                btnD3.Text = btnD2.Text;
+                                //btnD4.Text = btnD3.Text;
+                                //btnD3.Text = btnD2.Text;
 
-                                btnE4.Text = btnE3.Text;
-                                btnE3.Text = btnE2.Text;
+                                //btnE4.Text = btnE3.Text;
+                                //btnE3.Text = btnE2.Text;
 
-                                btnF4.Text = btnF3.Text;
-                                btnF3.Text = btnF2.Text;
+                                //btnF4.Text = btnF3.Text;
+                                //btnF3.Text = btnF2.Text;
 
-                                btnG4.Text = btnG3.Text;
-                                btnG3.Text = btnG2.Text;
+                                //btnG4.Text = btnG3.Text;
+                                //btnG3.Text = btnG2.Text;
 
-                                btnH4.Text = btnH3.Text;
-                                btnH3.Text = btnH2.Text;
+                                //btnH4.Text = btnH3.Text;
+                                //btnH3.Text = btnH2.Text;
 
-                                btnI4.Text = btnI3.Text;
-                                btnI3.Text = btnI2.Text;
+                                //btnI4.Text = btnI3.Text;
+                                //btnI3.Text = btnI2.Text;
                         }
 
                        else  if (atrip.BusInfoTB.TotalSits == 28)
@@ -354,32 +354,32 @@ namespace BusTicket
                             btnA2.Visible = btnB2.Visible = btnC2.Visible = btnD2.Visible = btnE2.Visible = btnF2.Visible = btnG2.Visible = btnH2.Visible = false;
                             btnJ1.Visible = btnJ2.Visible = btnJ3.Visible = btnJ4.Visible = false;
 
-                            btnA4.Text = btnA3.Text;
-                            btnA3.Text = btnA2.Text;
+                            //btnA4.Text = btnA3.Text;
+                            //btnA3.Text = btnA2.Text;
 
-                            btnB4.Text = btnB3.Text;
-                            btnB3.Text = btnB2.Text;
+                            //btnB4.Text = btnB3.Text;
+                            //btnB3.Text = btnB2.Text;
 
-                            btnC4.Text = btnC3.Text;
-                            btnC3.Text = btnC2.Text;
+                            //btnC4.Text = btnC3.Text;
+                            //btnC3.Text = btnC2.Text;
 
-                            btnD4.Text = btnD3.Text;
-                            btnD3.Text = btnD2.Text;
+                            //btnD4.Text = btnD3.Text;
+                            //btnD3.Text = btnD2.Text;
 
-                            btnE4.Text = btnE3.Text;
-                            btnE3.Text = btnE2.Text;
+                            //btnE4.Text = btnE3.Text;
+                            //btnE3.Text = btnE2.Text;
 
-                            btnF4.Text = btnF3.Text;
-                            btnF3.Text = btnF2.Text;
+                            //btnF4.Text = btnF3.Text;
+                            //btnF3.Text = btnF2.Text;
 
-                            btnG4.Text = btnG3.Text;
-                            btnG3.Text = btnG2.Text;
+                            //btnG4.Text = btnG3.Text;
+                            //btnG3.Text = btnG2.Text;
 
-                            btnH4.Text = btnH3.Text;
-                            btnH3.Text = btnH2.Text;
+                            //btnH4.Text = btnH3.Text;
+                            //btnH3.Text = btnH2.Text;
 
-                            btnI4.Text = btnI3.Text;
-                            btnI3.Text = btnI2.Text;
+                            //btnI4.Text = btnI3.Text;
+                            //btnI3.Text = btnI2.Text;
                         }
                     }
                     PerSeatPrice = Convert.ToDecimal(atrip.PerSitPrice);
@@ -422,11 +422,11 @@ namespace BusTicket
             {
                 using (BusDBEntities db = new BusDBEntities())
                 {
-                    TicketSelesDeteil aticketSelesDeteil;
-                    aticketSelesDeteil = db.TicketSelesDeteils.SingleOrDefault(a => a.TicketSalesInfoID == MstID && a.TicketSalesInfoTB.TripID == FTripID);
+                    List<TicketSelesDeteil> aticketSelesDeteil;
+                    aticketSelesDeteil = db.TicketSelesDeteils.Where(a => a.TicketSalesInfoID == MstID && a.TicketSalesInfoTB.TripID == FTripID).ToList();
                     if (aticketSelesDeteil != null)
                     {
-                        db.TicketSelesDeteils.Remove(aticketSelesDeteil);
+                        db.TicketSelesDeteils.RemoveRange(aticketSelesDeteil);
                         db.SaveChanges();
 
 
@@ -437,7 +437,7 @@ namespace BusTicket
                             db.TicketSalesInfoTBs.Remove(aTicketSalesInfoTB);
                             db.SaveChanges();
                             MstID = 0;
-
+                            this.Close();
                         }
 
                     }
@@ -484,15 +484,18 @@ namespace BusTicket
                                 db.TicketSelesDeteils.Add(aTicketSelesDeteil);
                             }
                             db.SaveChanges();
+
                         }
                         else
                         {
                             cmbBoxload();
                             MessageBox.Show("Save Succesfully");
+                            //this.Close();
                             return;
                         }
                         cmbBoxload();
                         MessageBox.Show("Save Succesfully");
+                        //this.Close();
                     }
                 }
             }
@@ -502,6 +505,7 @@ namespace BusTicket
             }
 
             Print(this.panel1);
+            this.Close();
         }
 
         private void btnBookSits_Click(object sender, EventArgs e)
@@ -567,6 +571,7 @@ namespace BusTicket
                         }
                         cmbBoxload();
                         MessageBox.Show("Save Succesfully");
+                        this.Close();
                     }
                 }
             }
@@ -578,15 +583,15 @@ namespace BusTicket
 
         private void btnUnBook_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure to Delete this Record ?", "EF CRUD Operation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are You Sure to Unbook This ?", "EF CRUD Operation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using (BusDBEntities db = new BusDBEntities())
                 {
-                    TicketSelesDeteil aticketSelesDeteil;
-                    aticketSelesDeteil = db.TicketSelesDeteils.SingleOrDefault(a => a.TicketSalesInfoID ==MstID  && a.TicketSalesInfoTB.TripID == FTripID);
+                    List<TicketSelesDeteil> aticketSelesDeteil;
+                    aticketSelesDeteil = db.TicketSelesDeteils.Where(a => a.TicketSalesInfoID ==MstID  && a.TicketSalesInfoTB.TripID == FTripID).ToList();
                     if (aticketSelesDeteil != null)
                     {
-                         db.TicketSelesDeteils.Remove(aticketSelesDeteil);
+                        db.TicketSelesDeteils.RemoveRange(aticketSelesDeteil) ;
                          db.SaveChanges();
 
                        
@@ -597,7 +602,7 @@ namespace BusTicket
                                 db.TicketSalesInfoTBs.Remove(aTicketSalesInfoTB);
                                 db.SaveChanges();
                                 MstID = 0;
-
+                                this.Close();
                             }
                      
                     }
@@ -690,6 +695,17 @@ namespace BusTicket
             }
 
             labelTotalPayable.Text = labelTotalAmount.Text;
+
+            //if (dgvSelectedSits.Rows.Count > 1)
+            //{
+            //    btnBookSits.Enabled = false;
+            //}
+            //if(dgvSelectedSits.Rows.Count == 1)
+            //{
+            //    btnBookSits.Enabled = true;
+            //}
+
+
         }
 
         private void btnA2_Click(object sender, EventArgs e)

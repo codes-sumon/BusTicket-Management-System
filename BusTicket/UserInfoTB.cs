@@ -14,6 +14,12 @@ namespace BusTicket
     
     public partial class UserInfoTB
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserInfoTB()
+        {
+            this.TicketSalesInfoTBs = new HashSet<TicketSalesInfoTB>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
@@ -22,5 +28,8 @@ namespace BusTicket
         public string Password { get; set; }
         public string AccountType { get; set; }
         public Nullable<bool> IsActive { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TicketSalesInfoTB> TicketSalesInfoTBs { get; set; }
     }
 }

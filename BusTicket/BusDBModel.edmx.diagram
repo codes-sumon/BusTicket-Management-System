@@ -4,26 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7b64a39b82a64634b2599f6f8f4266de" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="BusDBModel.BusInfoTB" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="BusDBModel.CounterInfoTB" Width="1.5" PointX="0.75" PointY="4.625" />
-        <EntityTypeShape EntityType="BusDBModel.DriverInfoTB" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="BusDBModel.RouteDetailsTB" Width="1.5" PointX="5.25" PointY="9.5" />
-        <EntityTypeShape EntityType="BusDBModel.RouteInfoTB" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="BusDBModel.SuperViseorInfoTB" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="BusDBModel.TicketSalesInfoTB" Width="1.5" PointX="7.5" PointY="3.375" />
-        <EntityTypeShape EntityType="BusDBModel.TicketSelesDeteil" Width="1.5" PointX="9.75" PointY="4.625" />
-        <EntityTypeShape EntityType="BusDBModel.TripInfoTB" Width="1.5" PointX="5.25" PointY="3.625" />
+      <Diagram DiagramId="7b64a39b82a64634b2599f6f8f4266de" Name="Diagram1" ZoomLevel="51">
+        <EntityTypeShape EntityType="BusDBModel.BusInfoTB" Width="1.5" PointX="3.875" PointY="2.75" />
+        <EntityTypeShape EntityType="BusDBModel.CounterInfoTB" Width="1.5" PointX="1.75" PointY="5.75" />
+        <EntityTypeShape EntityType="BusDBModel.DriverInfoTB" Width="1.5" PointX="6.125" PointY="8.125" />
+        <EntityTypeShape EntityType="BusDBModel.RouteDetailsTB" Width="1.5" PointX="3.875" PointY="8.375" />
+        <EntityTypeShape EntityType="BusDBModel.RouteInfoTB" Width="1.5" PointX="4.125" PointY="5.375" />
+        <EntityTypeShape EntityType="BusDBModel.SuperViseorInfoTB" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="BusDBModel.TicketSelesDeteil" Width="1.5" PointX="10.125" PointY="6.125" />
+        <EntityTypeShape EntityType="BusDBModel.TripInfoTB" Width="1.5" PointX="6" PointY="3.5" />
         <AssociationConnector Association="BusDBModel.FK_TripInfoTB_BusInfoTB" />
         <AssociationConnector Association="BusDBModel.FK_RouteInfoTB_CounterInfoTB" />
         <AssociationConnector Association="BusDBModel.FK_TripInfoTB_DriverInfoTB" />
         <AssociationConnector Association="BusDBModel.FK_RouteDetailsTB_RouteInfoTB" />
         <AssociationConnector Association="BusDBModel.FK_TripInfoTB_RouteInfoTB" />
-        <AssociationConnector Association="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" />
+        <AssociationConnector Association="BusDBModel.FK_TripInfoTB_SuperViseorInfoTB" ></AssociationConnector>
+        <EntityTypeShape EntityType="BusDBModel.TicketSalesInfoTB" Width="1.5" PointX="8.125" PointY="2.375" />
+        <EntityTypeShape EntityType="BusDBModel.UserInfoTB" Width="1.5" PointX="10" PointY="3" />
         <AssociationConnector Association="BusDBModel.FK_TicketSalesInfoTB_TripInfoTB" />
+        <AssociationConnector Association="BusDBModel.FK_TicketSalesInfoTB_UserInfoTB" />
         <AssociationConnector Association="BusDBModel.FK_TicketSelesDeteils_TicketSalesInfoTB" />
-        <EntityTypeShape EntityType="BusDBModel.UserInfoTB" Width="1.5" PointX="7.375" PointY="8.75" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

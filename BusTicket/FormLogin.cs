@@ -56,8 +56,9 @@ namespace BusTicket
 
         private void labelRegisterAccount_Click(object sender, EventArgs e)
         {
-            FormUserRegistration ss = new FormUserRegistration();
-            ss.Show();
+            //FormUserRegistration ss = new FormUserRegistration();
+            //ss.Show();
+            MessageBox.Show("New Account REG are Currently off");
         }
     }
 }

@@ -33,9 +33,9 @@ namespace BusTicket
         public virtual DbSet<RouteDetailsTB> RouteDetailsTBs { get; set; }
         public virtual DbSet<RouteInfoTB> RouteInfoTBs { get; set; }
         public virtual DbSet<SuperViseorInfoTB> SuperViseorInfoTBs { get; set; }
-        public virtual DbSet<TicketSalesInfoTB> TicketSalesInfoTBs { get; set; }
         public virtual DbSet<TicketSelesDeteil> TicketSelesDeteils { get; set; }
         public virtual DbSet<TripInfoTB> TripInfoTBs { get; set; }
+        public virtual DbSet<TicketSalesInfoTB> TicketSalesInfoTBs { get; set; }
         public virtual DbSet<UserInfoTB> UserInfoTBs { get; set; }
     
         public virtual ObjectResult<GetTripInformation_Result> GetTripInformation(Nullable<int> startCounter, Nullable<int> endCounter, string date)

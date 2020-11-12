@@ -144,9 +144,10 @@ namespace BusTicket
                 btnSetup.Visible = false;
                 btnUserRegister.Visible = false;
             }
-
+            labeUsername.Text = Global.LoggedInUser.Name;
             dgvFindBus.Visible = false;
             comboLoadData();
+            //this.reportViewer1.RefreshReport();
         }
 
         private void comboLoadData()
@@ -205,6 +206,12 @@ namespace BusTicket
             FormLogin ss = new FormLogin();
             ss.Close();
             Application.Exit();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmReportViewer());
+            hideSubMenu();
         }
     }
 }
